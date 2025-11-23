@@ -1,11 +1,25 @@
+import React, { useEffect, useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Github, Linkedin, Mail, ExternalLink, Code, Palette, Database, Globe } from "lucide-react"
+import { Github, Linkedin, Mail, ExternalLink, Code, Palette, Database, Globe, Sun, Moon } from "lucide-react"
 
 function App() {
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === "undefined") return false
+    const stored = localStorage.getItem("theme")
+    if (stored) return stored === "dark"
+    return window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ?? false
+  })
+
+  useEffect(() => {
+    if (isDark) document.documentElement.classList.add("dark")
+    else document.documentElement.classList.remove("dark")
+    localStorage.setItem("theme", isDark ? "dark" : "light")
+  }, [isDark])
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header Section */}
@@ -18,7 +32,7 @@ function App() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-pretty">
             Resourceful and detail-oriented Information Technology student with experience in building responsive web applications using ReactJS, Spring Boot, and MySQL. Passionate about creating solutions that make a difference in healthcare and service industries.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4 items-center">
             <Button size="lg" className="gap-2" asChild>
               <a href="mailto:dumangcasvincentpaul@gmail.com">
                 <Mail className="w-4 h-4" />
@@ -30,6 +44,17 @@ function App() {
                 <Github className="w-4 h-4" />
                 View My Work
               </a>
+            </Button>
+
+            {/* Dark mode toggle */}
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              onClick={() => setIsDark(!isDark)}
+              className="ml-2"
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </Button>
           </div>
         </div>
@@ -95,28 +120,32 @@ function App() {
                 description: "Backend API for the ProPath platform.",
                 image: "/placeholder.svg?height=200&width=300",
                 tech: ["Spring Boot", "MySQL", "REST API"],
-                github: "https://github.com/princeprog/propath-backend"
+                github: "https://github.com/princeprog/propath-backend",
+                live: "#",
               },
               {
                 title: "MediFlow Website",
                 description: "Healthcare management system with patient information, appointments, and medical records.",
                 image: "/placeholder.svg?height=200&width=300",
                 tech: ["React", "Spring Boot", "MySQL", "Tailwind"],
-                github: "https://github.com/asherpaquit/MediFlow"
+                github: "https://github.com/asherpaquit/MediFlow",
+                live: "https://medi-flow-alpha.vercel.app/",
               },
               {
                 title: "Rykzmotocare",
                 description: "Motorcycle service and maintenance platform with booking system.",
                 image: "/placeholder.svg?height=200&width=300",
                 tech: ["React", "Node.js", "MySQL", "REST API"],
-                github: "https://github.com/VincentPaul434/Rykzmotocare"
+                github: "https://github.com/VincentPaul434/Rykzmotocare",
+                live: "#",
               },
               {
                 title: "Wash Connect",
                 description: "Laundry service connection platform for customers and service providers.",
                 image: "/placeholder.svg?height=200&width=300",
                 tech: ["React", "Spring Boot", "MySQL", "Vercel"],
-                github: "https://github.com/VincentPaul434/wash-connect"
+                github: "https://github.com/VincentPaul434/wash-connect",
+                live: "#",
               },
             ].map((project, index) => (
               <Card key={index} className="group overflow-hidden hover:shadow-xl transition-all duration-300">
@@ -133,7 +162,12 @@ function App() {
                         Code
                       </a>
                     </Button>
-                    {/* Live Demo removed */}
+                    <Button size="sm" className="gap-2" asChild>
+                      <a href={project.live} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4" />
+                        Live Demo
+                      </a>
+                    </Button>
                   </div>
                 </div>
                 <CardHeader>
