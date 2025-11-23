@@ -7,12 +7,9 @@ import { Github, Linkedin, Mail, ExternalLink, Code, Palette, Database, Globe } 
 
 function App() {
   return (
-    /* Light option */
-    <div className="min-h-screen bg-[#F3F4F6]">
-    {/* Dark option (alternative): <div className="min-h-screen bg-[#0F172A] text-white"> */}
+    <div className="min-h-screen bg-background">
       {/* Header Section */}
-      <header className="relative overflow-hidden bg-gradient-to-br from-[#EEF2FF]/30 via-transparent to-[#E0F2FE]/30 py-20 px-6">
-      {/* Dark header gradient (alternative): <header className="relative overflow-hidden bg-gradient-to-br from-[#0B1220]/70 via-transparent to-[#0F172A]/70 py-20 px-6"> */}
+      <header className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-accent/5 py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 text-balance">Vincent Paul Dumangcas</h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 text-pretty">
@@ -98,32 +95,28 @@ function App() {
                 description: "Backend API for the ProPath platform.",
                 image: "/placeholder.svg?height=200&width=300",
                 tech: ["Spring Boot", "MySQL", "REST API"],
-                github: "https://github.com/princeprog/propath-backend",
-                live: "#",
+                github: "https://github.com/princeprog/propath-backend"
               },
               {
                 title: "MediFlow Website",
                 description: "Healthcare management system with patient information, appointments, and medical records.",
                 image: "/placeholder.svg?height=200&width=300",
                 tech: ["React", "Spring Boot", "MySQL", "Tailwind"],
-                github: "https://github.com/asherpaquit/MediFlow",
-                live: "https://medi-flow-alpha.vercel.app/",
+                github: "https://github.com/asherpaquit/MediFlow"
               },
               {
                 title: "Rykzmotocare",
                 description: "Motorcycle service and maintenance platform with booking system.",
                 image: "/placeholder.svg?height=200&width=300",
                 tech: ["React", "Node.js", "MySQL", "REST API"],
-                github: "https://github.com/VincentPaul434/Rykzmotocare",
-                live: "#",
+                github: "https://github.com/VincentPaul434/Rykzmotocare"
               },
               {
                 title: "Wash Connect",
                 description: "Laundry service connection platform for customers and service providers.",
                 image: "/placeholder.svg?height=200&width=300",
                 tech: ["React", "Spring Boot", "MySQL", "Vercel"],
-                github: "https://github.com/VincentPaul434/wash-connect",
-                live: "#",
+                github: "https://github.com/VincentPaul434/wash-connect"
               },
             ].map((project, index) => (
               <Card key={index} className="group overflow-hidden hover:shadow-xl transition-all duration-300">
@@ -140,12 +133,7 @@ function App() {
                         Code
                       </a>
                     </Button>
-                    <Button size="sm" className="gap-2" asChild>
-                      <a href={project.live} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4" />
-                        Live Demo
-                      </a>
-                    </Button>
+                    {/* Live Demo removed */}
                   </div>
                 </div>
                 <CardHeader>
