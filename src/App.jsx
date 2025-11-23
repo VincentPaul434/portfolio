@@ -7,9 +7,12 @@ import { Github, Linkedin, Mail, ExternalLink, Code, Palette, Database, Globe } 
 
 function App() {
   return (
-    <div className="min-h-screen bg-background">
+    /* Light option */
+    <div className="min-h-screen bg-[#F3F4F6]">
+    {/* Dark option (alternative): <div className="min-h-screen bg-[#0F172A] text-white"> */}
       {/* Header Section */}
-      <header className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-accent/5 py-20 px-6">
+      <header className="relative overflow-hidden bg-gradient-to-br from-[#EEF2FF]/30 via-transparent to-[#E0F2FE]/30 py-20 px-6">
+      {/* Dark header gradient (alternative): <header className="relative overflow-hidden bg-gradient-to-br from-[#0B1220]/70 via-transparent to-[#0F172A]/70 py-20 px-6"> */}
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 text-balance">Vincent Paul Dumangcas</h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 text-pretty">
