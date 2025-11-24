@@ -132,32 +132,28 @@ function App() {
                   description: "Backend API for the ProPath platform.",
                   image: "/placeholder.svg?height=200&width=300",
                   tech: ["Spring Boot", "MySQL", "REST API"],
-                  github: "https://github.com/princeprog/propath-backend",
-                  live: "#",
+                  github: "https://github.com/princeprog/propath-backend"
                 },
                 {
                   title: "MediFlow Website",
                   description: "Healthcare management system with patient information, appointments, and medical records.",
                   image: "/placeholder.svg?height=200&width=300",
                   tech: ["React", "Spring Boot", "MySQL", "Tailwind"],
-                  github: "https://github.com/asherpaquit/MediFlow",
-                  live: "https://medi-flow-alpha.vercel.app/",
+                  github: "https://github.com/asherpaquit/MediFlow"
                 },
                 {
                   title: "Rykzmotocare",
                   description: "Motorcycle service and maintenance platform with booking system.",
                   image: "/placeholder.svg?height=200&width=300",
                   tech: ["React", "Node.js", "MySQL", "REST API"],
-                  github: "https://github.com/VincentPaul434/Rykzmotocare",
-                  live: "#",
+                  github: "https://github.com/VincentPaul434/Rykzmotocare"
                 },
                 {
                   title: "Wash Connect",
                   description: "Laundry service connection platform for customers and service providers.",
                   image: "/placeholder.svg?height=200&width=300",
                   tech: ["React", "Spring Boot", "MySQL", "Vercel"],
-                  github: "https://github.com/VincentPaul434/wash-connect",
-                  live: "#",
+                  github: "https://github.com/VincentPaul434/wash-connect"
                 },
               ].map((project, index) => (
                 <Card key={index} className="group overflow-hidden hover:shadow-xl transition-all duration-300">
@@ -172,12 +168,6 @@ function App() {
                         <a href={project.github} target="_blank" rel="noopener noreferrer">
                           <Github className="w-4 h-4" />
                           Code
-                        </a>
-                      </Button>
-                      <Button size="sm" className="gap-2" asChild>
-                        <a href={project.live} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-4 h-4" />
-                          Live Demo
                         </a>
                       </Button>
                     </div>
