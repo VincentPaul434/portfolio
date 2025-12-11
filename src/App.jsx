@@ -149,6 +149,13 @@ function App() {
                   github: "https://github.com/VincentPaul434/Rykzmotocare"
                 },
                 {
+                  title: "Rykzmotocare Frontend",
+                  description: "Frontend for motorcycle service and maintenance platform with booking system.",
+                  image: "/placeholder.svg?height=200&width=300",
+                  tech: ["React", "Tailwind CSS", "REST API"],
+                  github: "https://github.com/VincentPaul434/Rykzmotocare-frontend"
+                },
+                {
                   title: "Wash Connect",
                   description: "Laundry service connection platform for customers and service providers.",
                   image: "/placeholder.svg?height=200&width=300",
