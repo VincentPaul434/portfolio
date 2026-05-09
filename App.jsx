@@ -91,21 +91,21 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "MediFlow Website",
-                description: "Healthcare management system with patient information, appointments, and medical records.",
+                title: "CIT NurseTracer",
+                description: "Nurse tracing and coordination web application for healthcare workflows.",
                 // use images placed in public/projects/*.png (see note)
                 image: "/projects/mediflow.png",
-                tech: ["React", "Spring Boot", "MySQL", "Tailwind"],
-                github: "https://github.com/asherpaquit/MediFlow",
-                live: "https://medi-flow-alpha.vercel.app/",
+                tech: ["React", "Vercel", "Healthcare"],
+                github: "https://citnursetracer.vercel.app/",
+                live: "https://citnursetracer.vercel.app/",
               },
               {
-                title: "Rykzmotocare",
-                description: "Motorcycle service and maintenance platform with booking system.",
+                title: "Synapse UI",
+                description: "Modern UI component library and interface toolkit.",
                 image: "/projects/rykzmotocare.png",
-                tech: ["React", "Node.js", "MySQL", "REST API"],
-                github: "https://github.com/VincentPaul434/Rykzmotocare",
-                live: "#",
+                tech: ["React", "UI", "Components"],
+                github: "https://github.com/princeprog/synapse-ui",
+                live: "https://github.com/princeprog/synapse-ui",
               },
               {
                 title: "Wash Connect",

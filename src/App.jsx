@@ -1,18 +1,240 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
+import { NavLink, Navigate, Route, Routes } from "react-router-dom"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Github, Linkedin, Mail, ExternalLink, Code, Palette, Database, Globe, Sun, Moon } from "lucide-react"
-import Particles from "./components/ui/Particles"
+import {
+  ArrowUpRight,
+  Code2,
+  Globe,
+  Linkedin,
+  Mail,
+  Moon,
+  Palette,
+  Sparkles,
+  Sun,
+  Wrench,
+} from "lucide-react"
+
+const navItems = [
+  { label: "About", to: "/about" },
+  { label: "Works", to: "/works" },
+  { label: "Services", to: "/services" },
+  { label: "Contact", to: "/contact" },
+]
+
+const projects = [
+  {
+    title: "CIT NurseTracer",
+    description: "Nurse tracing and coordination web application for healthcare workflows.",
+    tech: ["React", "Healthcare", "Vercel"],
+    link: "https://citnursetracer.vercel.app/",
+    type: "Live Website",
+  },
+  {
+    title: "Synapse UI",
+    description: "Modern UI component library and interface toolkit.",
+    tech: ["React", "Design Systems", "Components"],
+    link: "https://github.com/princeprog/synapse-ui",
+    type: "GitHub Repository",
+  },
+  {
+    title: "ProPath Backend",
+    description: "Backend API for a career platform with scalable endpoint design.",
+    tech: ["Spring Boot", "MySQL", "REST API"],
+    link: "https://github.com/princeprog/propath-backend",
+    type: "GitHub Repository",
+  },
+]
+
+function AboutPage() {
+  return (
+    <section className="pt-8 pb-16">
+      <div className="relative overflow-hidden rounded-3xl border bg-card/80 backdrop-blur">
+        <div className="pointer-events-none absolute -left-24 top-12 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
+        <div className="pointer-events-none absolute -right-16 -bottom-16 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
+
+        <div className="grid grid-cols-1 items-center gap-12 px-8 py-10 md:grid-cols-[1.1fr_0.9fr] md:px-14 md:py-14">
+          <div>
+            <Badge className="mb-4 rounded-full bg-primary/15 text-primary hover:bg-primary/20">Portfolio 2026</Badge>
+            <h1 className="text-balance text-4xl font-extrabold leading-[1.03] tracking-tight md:text-6xl">
+              Building digital products, brands, and clean developer experiences.
+            </h1>
+            <p className="mt-6 max-w-xl text-pretty text-base text-muted-foreground md:text-lg">
+              I am Vincent Paul, a full-stack developer focused on practical software for healthcare and service teams.
+              I design thoughtful frontends, wire reliable backends, and ship products that are easy to use.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Input placeholder="Email address" className="h-12 rounded-full bg-background/70" />
+              <Button className="h-12 rounded-full px-7 font-semibold">
+                Connect With Me
+                <ArrowUpRight className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-[420px]">
+            <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-primary/25 to-transparent blur-2xl" />
+            <div className="relative overflow-hidden rounded-[2rem] border bg-background/80 p-3">
+              <img
+                src="/profile-photo.jpg"
+                alt="Professional portrait"
+                className="h-[420px] w-full rounded-[1.6rem] object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function WorksPage() {
+  return (
+    <section className="pt-8 pb-16">
+      <div className="mb-10">
+        <h2 className="text-3xl font-bold tracking-tight md:text-5xl">Selected Works</h2>
+        <p className="mt-3 max-w-2xl text-muted-foreground">
+          Projects focused on useful experiences, scalable structure, and polished interface details.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {projects.map((project) => (
+          <Card key={project.title} className="group border-border/70 bg-card/80 backdrop-blur transition-all hover:-translate-y-1 hover:shadow-xl">
+            <CardHeader>
+              <CardDescription>{project.type}</CardDescription>
+              <CardTitle className="text-xl">{project.title}</CardTitle>
+              <p className="text-sm text-muted-foreground">{project.description}</p>
+            </CardHeader>
+            <CardContent>
+              <div className="mb-5 flex flex-wrap gap-2">
+                {project.tech.map((item) => (
+                  <Badge key={item} variant="outline" className="rounded-full">
+                    {item}
+                  </Badge>
+                ))}
+              </div>
+              <Button asChild className="w-full rounded-full">
+                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                  Visit Project
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function ServicesPage() {
+  const services = useMemo(
+    () => [
+      {
+        icon: Globe,
+        title: "Web Product Design",
+        description: "Interface architecture, visual hierarchy, and responsive page systems for modern products.",
+      },
+      {
+        icon: Code2,
+        title: "Full-Stack Development",
+        description: "React frontends and Spring Boot APIs with practical data modeling and maintainable code.",
+      },
+      {
+        icon: Palette,
+        title: "UI Systems",
+        description: "Reusable components, design tokens, and polished interaction patterns for fast iteration.",
+      },
+      {
+        icon: Wrench,
+        title: "Technical Support",
+        description: "Refactors, bug fixing, and feature cleanup to stabilize projects before release.",
+      },
+    ],
+    [],
+  )
+
+  return (
+    <section className="pt-8 pb-16">
+      <div className="mb-10 flex items-center gap-3">
+        <Sparkles className="h-6 w-6 text-primary" />
+        <h2 className="text-3xl font-bold tracking-tight md:text-5xl">Services</h2>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {services.map((service) => (
+          <Card key={service.title} className="rounded-3xl border-border/70 bg-card/80">
+            <CardHeader>
+              <div className="mb-2 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/15">
+                <service.icon className="h-5 w-5 text-primary" />
+              </div>
+              <CardTitle>{service.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">{service.description}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function ContactPage() {
+  return (
+    <section className="pt-8 pb-16">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <Card className="rounded-3xl bg-card/80">
+          <CardHeader>
+            <CardTitle className="text-3xl">Let us build together</CardTitle>
+            <CardDescription>
+              Tell me what you are building and I can help you shape the product and ship it cleanly.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4 text-sm">
+            <a className="flex items-center gap-3 text-muted-foreground hover:text-foreground" href="mailto:dumangcasvincentpaul@gmail.com">
+              <Mail className="h-4 w-4" />
+              dumangcasvincentpaul@gmail.com
+            </a>
+            <a className="flex items-center gap-3 text-muted-foreground hover:text-foreground" href="https://www.linkedin.com/in/vincent-paul-dumangcas-74063a365/" target="_blank" rel="noopener noreferrer">
+              <Linkedin className="h-4 w-4" />
+              LinkedIn profile
+            </a>
+          </CardContent>
+        </Card>
+
+        <Card className="rounded-3xl border-border/70 bg-card/80">
+          <CardContent className="p-6 md:p-8">
+            <form className="space-y-5" name="contact" method="post" data-netlify="true">
+              <input type="hidden" name="form-name" value="contact" />
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <Input name="name" placeholder="Your name" required className="h-11 rounded-xl" />
+                <Input name="email" type="email" placeholder="Email address" required className="h-11 rounded-xl" />
+              </div>
+              <Input name="subject" placeholder="Project subject" required className="h-11 rounded-xl" />
+              <Textarea name="message" rows={6} placeholder="Write your message" required className="rounded-xl" />
+              <Button type="submit" className="h-11 w-full rounded-xl font-semibold">
+                Send Message
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  )
+}
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
-    if (typeof window === "undefined") return true
+    if (typeof window === "undefined") return false
     const stored = localStorage.getItem("theme")
     if (stored) return stored === "dark"
-    return true // default to dark on first visit
+    return false
   })
 
   useEffect(() => {
@@ -22,313 +244,72 @@ function App() {
   }, [isDark])
 
   return (
-    <div className="min-h-screen bg-background relative">
-      <Particles
-        particleColors={['#ffffff', '#ffffff']}
-        particleCount={200}
-        particleSpread={10}
-        speed={0.1}
-        particleBaseSize={100}
-        moveParticlesOnHover={true}
-        alphaParticles={false}
-        disableRotation={false}
-      />
-      <div className="relative z-10">
-        {/* Header Section */}
-        <header className="overflow-hidden bg-gradient-to-br from-primary/5 via-background to-accent/5 py-20 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 text-balance">Vincent Paul Dumangcas</h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 text-pretty">
-              Full-Stack Developer & IT Student
-            </p>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-pretty">
-              Resourceful and detail-oriented Information Technology student with experience in building responsive web applications using ReactJS, Spring Boot, and MySQL. Passionate about creating solutions that make a difference in healthcare and service industries.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 items-center">
-              <Button size="lg" className="gap-2" asChild>
-                <a href="mailto:dumangcasvincentpaul@gmail.com">
-                  <Mail className="w-4 h-4" />
-                  Get In Touch
-                </a>
-              </Button>
-              <Button variant="outline" size="lg" className="gap-2 bg-transparent" asChild>
-                <a href="#projects">
-                  <Github className="w-4 h-4" />
-                  View My Work
-                </a>
-              </Button>
-
-              {/* Dark mode toggle */}
-              <Button
-                variant="ghost"
-                size="icon"
-                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-                onClick={() => setIsDark(!isDark)}
-                className="ml-2"
-              >
-                {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-              </Button>
-            </div>
-          </div>
-        </header>
-
-        {/* Skills Section */}
-        <section className="py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance">Skills & Expertise</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { 
-                  icon: Code, 
-                  title: "Frontend Development", 
-                  skills: ["React", "Vue.js", "HTML/CSS", "Tailwind CSS"] 
-                },
-                { 
-                  icon: Database, 
-                  title: "Backend Development", 
-                  skills: ["Spring Boot", "Node.js", "MySQL", "REST APIs"] 
-                },
-                { 
-                  icon: Palette, 
-                  title: "Tools & Technologies", 
-                  skills: ["Git & GitHub", "Vercel", "Google Workspace", "Microsoft Office"] 
-                },
-                { 
-                  icon: Globe, 
-                  title: "AI & Productivity", 
-                  skills: ["ChatGPT", "AI Tools", "Problem-solving", "Efficiency"] 
-                },
-              ].map((category, index) => (
-                <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                  <CardHeader className="text-center">
-                    <div className="w-12 h-12 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <category.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">{category.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      {category.skills.map((skill, skillIndex) => (
-                        <Badge key={skillIndex} variant="secondary" className="text-xs">
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="py-20 px-6 bg-muted/30">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance">Featured Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "ProPath Backend",
-                  description: "Backend API for the ProPath platform.",
-                  image: "/placeholder.svg?height=200&width=300",
-                  tech: ["Spring Boot", "MySQL", "REST API"],
-                  github: "https://github.com/princeprog/propath-backend"
-                },
-                {
-                  title: "MediFlow Website",
-                  description: "Healthcare management system with patient information, appointments, and medical records.",
-                  image: "/placeholder.svg?height=200&width=300",
-                  tech: ["React", "Spring Boot", "MySQL", "Tailwind"],
-                  github: "https://github.com/asherpaquit/MediFlow"
-                },
-                {
-                  title: "Rykzmotocare",
-                  description: "Motorcycle service and maintenance platform with booking system.",
-                  image: "/placeholder.svg?height=200&width=300",
-                  tech: ["React", "Node.js", "MySQL", "REST API"],
-                  github: "https://github.com/VincentPaul434/Rykzmotocare"
-                },
-                {
-                  title: "Rykzmotocare Frontend",
-                  description: "Frontend for motorcycle service and maintenance platform with booking system.",
-                  image: "/placeholder.svg?height=200&width=300",
-                  tech: ["React", "Tailwind CSS", "REST API"],
-                  github: "https://github.com/VincentPaul434/Rykzmotocare-frontend"
-                },
-                {
-                  title: "Wash Connect",
-                  description: "Laundry service connection platform for customers and service providers.",
-                  image: "/placeholder.svg?height=200&width=300",
-                  tech: ["React", "Spring Boot", "MySQL", "Vercel"],
-                  github: "https://github.com/VincentPaul434/wash-connect"
-                },
-              ].map((project, index) => (
-                <Card key={index} className="group overflow-hidden hover:shadow-xl transition-all duration-300">
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                      <Button size="sm" variant="secondary" className="gap-2" asChild>
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
-                          <Github className="w-4 h-4" />
-                          Code
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                  <CardHeader>
-                    <CardTitle className="text-xl">{project.title}</CardTitle>
-                    <CardDescription className="text-pretty">{project.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, techIndex) => (
-                        <Badge key={techIndex} variant="outline" className="text-xs">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Experience Timeline */}
-        <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance">Experience & Education</h2>
-            <div className="relative">
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border"></div>
-              {[
-                {
-                  title: "MediFlow Website Project",
-                  company: "Full-Stack Developer",
-                  period: "Feb 2025 - May 2025",
-                  description: "Designed and implemented responsive user interfaces using ReactJS and Tailwind CSS. Developed RESTful API integrations using Spring Boot and MySQL for patient information storage with secure authentication and role-based access control.",
-                },
-                {
-                  title: "Cebu Institute of Technology-University",
-                  company: "Bachelor of Science in Information Technology",
-                  period: "2021 - Present",
-                  description: "Currently pursuing degree in Information Technology with focus on full-stack web development.",
-                },
-                {
-                  title: "Nissi Academy International School",
-                  company: "Secondary Education",
-                  period: "2019 - 2021",
-                  description: "Completed secondary education with focus on technology and computer science.",
-                },
-              ].map((item, index) => (
-                <div key={index} className="relative flex items-start mb-8">
-                  <div className="absolute left-6 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
-                  <div className="ml-16">
-                    <Card>
-                      <CardHeader>
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                          <CardTitle className="text-lg">{item.title}</CardTitle>
-                          <Badge variant="secondary">{item.period}</Badge>
-                        </div>
-                        <CardDescription className="font-medium text-accent">{item.company}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-muted-foreground text-pretty">{item.description}</p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section className="py-20 px-6 bg-muted/30">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-balance">Let's Work Together</h2>
-            <p className="text-center text-muted-foreground mb-12 text-pretty">
-              Have a project in mind? I'd love to hear about it and discuss how we can bring your ideas to life.
-            </p>
-            <Card>
-              <CardContent className="p-6">
-                <form className="space-y-6" name="contact" method="post" data-netlify="true">
-                  <input type="hidden" name="form-name" value="contact" />
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-2">
-                        Name
-                      </label>
-                      <Input id="name" name="name" placeholder="Your name" required />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-2">
-                        Email
-                      </label>
-                      <Input id="email" name="email" type="email" placeholder="your@email.com" required />
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                      Subject
-                    </label>
-                    <Input id="subject" name="subject" placeholder="Project inquiry" required />
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">
-                      Message
-                    </label>
-                    <Textarea id="message" name="message" rows={5} placeholder="Tell me about your project..." required />
-                  </div>
-                  <Button type="submit" size="lg" className="w-full">
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="py-12 px-6 border-t">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-              <div className="text-center sm:text-left">
-                <h3 className="font-bold text-lg mb-2">Vincent Paul Dumangcas</h3>
-                <p className="text-muted-foreground">Full-Stack Developer & IT Student</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <Button variant="ghost" size="icon" asChild>
-                  <a href="https://github.com/VincentPaul434" target="_blank" rel="noopener noreferrer">
-                    <Github className="w-5 h-5" />
-                    <span className="sr-only">GitHub</span>
-                  </a>
-                </Button>
-                <Button variant="ghost" size="icon" asChild>
-                  <a href="https://www.linkedin.com/in/vincent-paul-dumangcas-74063a365/" target="_blank" rel="noopener noreferrer">
-                    <Linkedin className="w-5 h-5" />
-                    <span className="sr-only">LinkedIn</span>
-                  </a>
-                </Button>
-                <Button variant="ghost" size="icon" asChild>
-                  <a href="mailto:dumangcasvincentpaul@gmail.com">
-                    <Mail className="w-5 h-5" />
-                    <span className="sr-only">Email</span>
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="mt-8 pt-8 border-t text-center text-muted-foreground">
-              <p>&copy; {new Date().getFullYear()} Vincent Paul Dumangcas. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute -left-24 -top-16 h-80 w-80 rounded-full bg-primary/20 blur-3xl" />
+        <div className="absolute right-0 top-24 h-72 w-72 rounded-full bg-accent/15 blur-3xl" />
+        <div className="absolute bottom-0 left-1/2 h-64 w-[34rem] -translate-x-1/2 rounded-full bg-muted/70 blur-3xl" />
       </div>
+
+      <header className="sticky top-0 z-30 border-b border-border/70 bg-background/75 backdrop-blur-xl">
+        <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-6">
+          <NavLink to="/about" className="font-bold tracking-tight text-lg">
+            Vincent Paul
+          </NavLink>
+
+          <nav className="hidden items-center gap-1 rounded-full border border-border/70 bg-card/60 p-1 md:flex">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) =>
+                  `rounded-full px-4 py-2 text-sm transition ${isActive ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" size="icon" aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"} onClick={() => setIsDark(!isDark)}>
+              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </Button>
+            <Button variant="outline" className="hidden rounded-full md:inline-flex" asChild>
+              <a href="mailto:dumangcasvincentpaul@gmail.com">Hire Me</a>
+            </Button>
+          </div>
+        </div>
+
+        <div className="border-t border-border/50 px-4 py-2 md:hidden">
+          <nav className="mx-auto flex w-full max-w-6xl gap-2 overflow-x-auto">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) =>
+                  `whitespace-nowrap rounded-full px-4 py-2 text-sm ${isActive ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground"}`
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
+      </header>
+
+      <main className="mx-auto w-full max-w-6xl px-6">
+        <Routes>
+          <Route path="/" element={<Navigate to="/about" replace />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/works" element={<WorksPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<Navigate to="/about" replace />} />
+        </Routes>
+      </main>
     </div>
   )
 }
 
-export default App;
+export default App
