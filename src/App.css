@@ -131,4 +131,159 @@
   h4 {
     font-family: "Sora", sans-serif;
   }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* --- Animated gradient text --- */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.gradient-text {
+  background: linear-gradient(
+    120deg,
+    var(--primary) 0%,
+    oklch(0.7 0.18 162.4) 25%,
+    oklch(0.6 0.2 200) 50%,
+    var(--primary) 75%,
+    oklch(0.7 0.18 162.4) 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* --- Floating profile photo --- */
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(0.6deg); }
+}
+.float-soft { animation: float-soft 6s ease-in-out infinite; }
+
+/* --- Animated blob backgrounds --- */
+@keyframes blob-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 25px) scale(0.95); }
+}
+.blob-drift { animation: blob-drift 18s ease-in-out infinite; }
+.blob-drift-slow { animation: blob-drift 26s ease-in-out infinite reverse; }
+
+/* --- Scroll reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(.22,.61,.36,1), transform 0.7s cubic-bezier(.22,.61,.36,1);
+  will-change: opacity, transform;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Fade-in for page transitions --- */
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.page-enter {
+  animation: page-in 0.55s cubic-bezier(.22,.61,.36,1) both;
+}
+
+/* --- Shine sweep for buttons --- */
+@keyframes shine-sweep {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(250%) skewX(-20deg); }
+}
+.shine-on-hover { position: relative; overflow: hidden; }
+.shine-on-hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+}
+.shine-on-hover:hover::after {
+  animation: shine-sweep 0.9s ease;
+}
+
+/* --- Tilt card --- */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+.tilt-card .tilt-inner {
+  transform: translateZ(30px);
+  transition: transform 0.25s ease;
+}
+
+/* --- Marquee tech stack --- */
+@keyframes marquee-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-x 28s linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* --- Caret blink --- */
+@keyframes caret-blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+.caret-blink { animation: caret-blink 1.05s steps(1) infinite; }
+
+/* --- Pulse ring --- */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 oklch(0.5 0.15 162.4 / 0.55); }
+  70% { box-shadow: 0 0 0 18px oklch(0.5 0.15 162.4 / 0); }
+  100% { box-shadow: 0 0 0 0 oklch(0.5 0.15 162.4 / 0); }
+}
+.pulse-ring { animation: pulse-ring 2.4s cubic-bezier(.66,0,0,1) infinite; }
+
+/* --- Underline grow for nav --- */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: 6px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(.22,.61,.36,1);
+}
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* --- Respect reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .float-soft,
+  .blob-drift,
+  .blob-drift-slow,
+  .marquee-track,
+  .caret-blink,
+  .pulse-ring,
+  .gradient-text {
+    animation: none !important;
+  }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
