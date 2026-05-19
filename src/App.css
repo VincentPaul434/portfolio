@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -79,7 +79,9 @@
 
 @theme inline {
   --font-sans: "Manrope", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --font-display: "Sora", sans-serif;
+  --font-serif: "Fraunces", "Georgia", serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -124,16 +126,234 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+    font-feature-settings: "ss01", "cv11", "cv09";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
   h1,
   h2,
   h3,
   h4 {
     font-family: "Sora", sans-serif;
+    letter-spacing: -0.025em;
+  }
+  h1 { letter-spacing: -0.04em; }
+  .font-serif-display {
+    font-family: var(--font-serif);
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    font-style: italic;
+    letter-spacing: -0.03em;
+  }
+  .font-mono { font-family: var(--font-mono); }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
   }
   html {
     scroll-behavior: smooth;
   }
+  /* Hide native cursor on devices with fine pointer when custom cursor active */
+  .has-custom-cursor,
+  .has-custom-cursor * {
+    cursor: none;
+  }
+  @media (hover: none), (pointer: coarse) {
+    .has-custom-cursor,
+    .has-custom-cursor * { cursor: auto; }
+  }
+}
+
+/* --- Noise texture overlay --- */
+.noise-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.dark .noise-layer { opacity: 0.06; }
+
+/* --- Mesh / grid backdrop --- */
+.mesh-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, oklch(0.5 0.15 162.4 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.5 0.15 162.4 / 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, #000 30%, transparent 75%);
+}
+.dark .mesh-grid {
+  background-image:
+    linear-gradient(to right, oklch(0.6 0.15 162.4 / 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.6 0.15 162.4 / 0.08) 1px, transparent 1px);
+}
+
+/* --- Custom cursor & glow follower --- */
+.cursor-dot,
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate3d(-50%, -50%, 0);
+  will-change: transform;
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--primary);
+  mix-blend-mode: difference;
+  transition: width 0.18s ease, height 0.18s ease, opacity 0.2s ease;
+}
+.cursor-glow {
+  width: 320px;
+  height: 320px;
+  border-radius: 999px;
+  background: radial-gradient(circle, oklch(0.6 0.18 162.4 / 0.18), oklch(0.6 0.18 162.4 / 0) 60%);
+  filter: blur(8px);
+  opacity: 0.9;
+  transition: opacity 0.4s ease, width 0.4s ease, height 0.4s ease;
+}
+.cursor-dot.is-hover {
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: 1.5px solid var(--primary);
+}
+.cursor-glow.is-hover {
+  width: 460px;
+  height: 460px;
+}
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-glow { display: none; }
+}
+
+/* --- Scroll progress bar --- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  z-index: 60;
+  background: linear-gradient(90deg, var(--primary), oklch(0.7 0.18 200), var(--primary));
+  background-size: 200% 100%;
+  animation: gradient-shift 6s ease infinite;
+  transform-origin: left center;
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+/* --- Magnetic button --- */
+.magnetic {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
+
+/* --- Spotlight (light follows cursor inside card) --- */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    oklch(0.6 0.18 162.4 / 0.18),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.spotlight:hover::before { opacity: 1; }
+.spotlight > * { position: relative; z-index: 1; }
+
+/* --- Hand-drawn underline (brand accent) --- */
+.brand-underline {
+  position: relative;
+  display: inline-block;
+}
+.brand-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.18em;
+  height: 0.45em;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 18' preserveAspectRatio='none'><path d='M2 12 C 40 2, 80 18, 120 8 S 190 6, 198 12' stroke='%2310b981' stroke-width='3' fill='none' stroke-linecap='round'/></svg>");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  opacity: 0.85;
+}
+
+/* --- Hover lift + depth shadow --- */
+.depth-hover {
+  transition:
+    transform 0.45s cubic-bezier(.22,.61,.36,1),
+    box-shadow 0.45s cubic-bezier(.22,.61,.36,1),
+    border-color 0.3s ease;
+}
+.depth-hover:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 1px 1px oklch(0 0 0 / 0.04),
+    0 8px 16px oklch(0 0 0 / 0.06),
+    0 24px 48px oklch(0.5 0.15 162.4 / 0.18);
+}
+
+/* --- Section divider with brand mark --- */
+.section-rule {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.section-rule::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--primary);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 4px var(--background), 0 0 0 5px var(--primary);
+}
+
+/* --- Section fade-in with stagger --- */
+@keyframes section-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.985); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+.page-enter {
+  animation: section-in 0.7s cubic-bezier(.22,.61,.36,1) both;
+}
+.page-enter > * { animation: section-in 0.7s cubic-bezier(.22,.61,.36,1) both; }
+.page-enter > *:nth-child(1) { animation-delay: 0.05s; }
+.page-enter > *:nth-child(2) { animation-delay: 0.15s; }
+.page-enter > *:nth-child(3) { animation-delay: 0.25s; }
+.page-enter > *:nth-child(4) { animation-delay: 0.35s; }
+
+/* --- Parallax helper --- */
+.parallax {
+  transition: transform 0.6s cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
 }
 
 /* --- Animated gradient text --- */
@@ -184,15 +404,6 @@
 .reveal.in-view {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* --- Fade-in for page transitions --- */
-@keyframes page-in {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.page-enter {
-  animation: page-in 0.55s cubic-bezier(.22,.61,.36,1) both;
 }
 
 /* --- Shine sweep for buttons --- */
@@ -282,8 +493,14 @@
   .marquee-track,
   .caret-blink,
   .pulse-ring,
-  .gradient-text {
+  .gradient-text,
+  .scroll-progress,
+  .page-enter,
+  .page-enter > *,
+  .parallax {
     animation: none !important;
+    transition: none !important;
   }
   .reveal { opacity: 1; transform: none; transition: none; }
+  .cursor-dot, .cursor-glow { display: none; }
 }
