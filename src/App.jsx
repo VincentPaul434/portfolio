@@ -601,10 +601,10 @@ function AboutPage() {
                     variant="outline"
                     className="h-12 rounded-full border-border/70 px-6 font-medium backdrop-blur transition hover:-translate-y-0.5 hover:border-primary/60 hover:text-primary"
                   >
-                    <a href="/resume.pdf" download>
-                      <Download className="h-4 w-4" />
-                      Download Resume
-                    </a>
+                      <a href="/r/Resume_Vincent_Paul_Dumangcas.docx" download="Resume_Vincent_Paul_Dumangcas.docx">
+                        <Download className="h-4 w-4" />
+                        Download Resume
+                      </a>
                   </Button>
                 </Magnetic>
               </div>
