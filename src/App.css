@@ -191,6 +191,94 @@
   overflow-x: auto;
 }
 
+.hero-veil-shell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--primary) 16%, var(--border));
+  border-radius: 2px;
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--primary) 10%, transparent), transparent 46%),
+    linear-gradient(180deg, rgba(14, 15, 17, 0.82), rgba(14, 15, 17, 0.94));
+}
+
+.hero-veil-layer,
+.hero-veil-tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-veil-layer {
+  opacity: 0.32;
+  filter: saturate(0.75) brightness(0.72);
+  -webkit-mask-image: radial-gradient(circle at center, #000 20%, transparent 88%);
+  mask-image: radial-gradient(circle at center, #000 20%, transparent 88%);
+}
+
+.hero-veil-tint {
+  background:
+    linear-gradient(180deg, rgba(14, 15, 17, 0.1), rgba(14, 15, 17, 0.6)),
+    linear-gradient(90deg, rgba(14, 15, 17, 0.2), transparent 28%, transparent 72%, rgba(14, 15, 17, 0.22));
+}
+
+.hero-term-window {
+  position: relative;
+  z-index: 1;
+  border: 0;
+  background: transparent;
+}
+
+.hero-term-window .term-bar {
+  background: rgba(17, 19, 22, 0.74);
+  backdrop-filter: blur(3px);
+}
+
+.hero-term-window .term-body {
+  background: linear-gradient(180deg, rgba(22, 24, 27, 0.84), rgba(22, 24, 27, 0.92));
+}
+
+.split-text {
+  display: block;
+}
+
+.split-text-piece {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.7em);
+  transition:
+    opacity 0.55s cubic-bezier(.22,.61,.36,1),
+    transform 0.55s cubic-bezier(.22,.61,.36,1);
+  will-change: transform, opacity;
+}
+
+.split-text-piece.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.split-text .text-primary {
+  color: var(--primary);
+}
+
+.spotlight-project {
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.spotlight-project::before {
+  z-index: 0;
+  background:
+    radial-gradient(circle 260px at var(--mouse-x) var(--mouse-y), rgba(255, 176, 32, 0.1), transparent 72%);
+}
+
+.spotlight-project-panel {
+  position: relative;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(22, 24, 27, 0.98), rgba(22, 24, 27, 0.98)),
+    var(--card);
+}
+
 /* code token colors */
 .t-kw   { color: var(--code-keyword); }
 .t-var  { color: var(--code-var); font-weight: 600; }
@@ -280,4 +368,7 @@
   }
   .reveal { opacity: 1; transform: none; transition: none; }
   .panel-hover:hover { transform: none; }
+  .hero-veil-layer { display: none; }
+  .split-text-piece { opacity: 1; transform: none; transition: none; }
+  .spotlight-project::before { display: none; }
 }
