@@ -19,7 +19,10 @@ import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import DarkVeil from "@/components/ui/DarkVeil"
 import { Input } from "@/components/ui/input"
+import SplitText from "@/components/ui/SplitText"
+import SpotlightCard from "@/components/ui/SpotlightCard"
 import { Textarea } from "@/components/ui/textarea"
 import {
   ArrowUpRight,
@@ -281,11 +284,13 @@ function AboutPage() {
           </Reveal>
 
           <Reveal delay={90}>
-            <h1 className="mt-6 text-balance text-4xl font-semibold leading-[1.08] tracking-tight md:text-[3.25rem]">
-              I build web apps from the{" "}
-              <span className="text-primary">database</span> to the{" "}
-              <span className="text-primary">browser</span>.
-            </h1>
+            <SplitText
+              as="h1"
+              delay={0}
+              stagger={38}
+              className="mt-6 text-balance text-4xl font-semibold leading-[1.08] tracking-tight md:text-[3.25rem]"
+              text="I build web apps from the database to the browser."
+            />
           </Reveal>
 
           <Reveal delay={170}>
@@ -342,19 +347,33 @@ function AboutPage() {
 
         {/* Code-block hero */}
         <Reveal delay={140}>
-          <TermWindow title="~/vincent — zsh">
-            <pre className="whitespace-pre">
-              <code>
-                <span className="t-kw">const</span> <span className="t-var">vincent</span> <span className="t-punc">= {"{"}</span>{"\n"}
-                {"  "}<span className="t-key">role</span><span className="t-punc">:</span>     <span className="t-str">&quot;full-stack developer&quot;</span><span className="t-punc">,</span>{"\n"}
-                {"  "}<span className="t-key">studies</span><span className="t-punc">:</span>  <span className="t-str">&quot;BS Information Tech, CIT-U&quot;</span><span className="t-punc">,</span>{"\n"}
-                {"  "}<span className="t-key">stack</span><span className="t-punc">:</span>    <span className="t-punc">[</span><span className="t-str">&quot;react&quot;</span><span className="t-punc">,</span> <span className="t-str">&quot;spring&quot;</span><span className="t-punc">,</span> <span className="t-str">&quot;mysql&quot;</span><span className="t-punc">]</span><span className="t-punc">,</span>{"\n"}
-                {"  "}<span className="t-key">location</span><span className="t-punc">:</span> <span className="t-str">&quot;Cebu, PH&quot;</span><span className="t-punc">,</span>{"\n"}
-                {"  "}<span className="t-key">status</span><span className="t-punc">:</span>   <span className="t-str">&quot;open to work&quot;</span><span className="t-punc">,</span>{"\n"}
-                <span className="t-punc">{"}"}</span>
-              </code>
-            </pre>
-          </TermWindow>
+          <div className="hero-veil-shell">
+            <div className="hero-veil-layer" aria-hidden="true">
+              <DarkVeil
+                hueShift={-34}
+                noiseIntensity={0.02}
+                scanlineIntensity={0.1}
+                speed={0.3}
+                scanlineFrequency={1.6}
+                warpAmount={0.35}
+                resolutionScale={1}
+              />
+            </div>
+            <div className="hero-veil-tint" aria-hidden="true" />
+            <TermWindow title="~/vincent — zsh" className="hero-term-window">
+              <pre className="whitespace-pre">
+                <code>
+                  <span className="t-kw">const</span> <span className="t-var">vincent</span> <span className="t-punc">= {"{"}</span>{"\n"}
+                  {"  "}<span className="t-key">role</span><span className="t-punc">:</span>     <span className="t-str">&quot;full-stack developer&quot;</span><span className="t-punc">,</span>{"\n"}
+                  {"  "}<span className="t-key">studies</span><span className="t-punc">:</span>  <span className="t-str">&quot;BS Information Tech, CIT-U&quot;</span><span className="t-punc">,</span>{"\n"}
+                  {"  "}<span className="t-key">stack</span><span className="t-punc">:</span>    <span className="t-punc">[</span><span className="t-str">&quot;react&quot;</span><span className="t-punc">,</span> <span className="t-str">&quot;spring&quot;</span><span className="t-punc">,</span> <span className="t-str">&quot;mysql&quot;</span><span className="t-punc">]</span><span className="t-punc">,</span>{"\n"}
+                  {"  "}<span className="t-key">location</span><span className="t-punc">:</span> <span className="t-str">&quot;Cebu, PH&quot;</span><span className="t-punc">,</span>{"\n"}
+                  {"  "}<span className="t-key">status</span><span className="t-punc">:</span>   <span className="t-str">&quot;open to work&quot;</span><span className="t-punc">,</span>{"\n"}
+                  <span className="t-punc">{"}"}</span>
+                </code>
+              </pre>
+            </TermWindow>
+          </div>
         </Reveal>
       </div>
 
@@ -454,7 +473,8 @@ function WorksPage() {
       <div className="grid grid-cols-1 gap-6">
         {projects.map((project, i) => (
           <Reveal key={project.title} delay={i * 90}>
-            <article className="panel panel-hover overflow-hidden">
+            <SpotlightCard className="spotlight-project">
+              <article className="panel panel-hover spotlight-project-panel overflow-hidden">
               {/* title bar */}
               <div className="flex items-center justify-between border-b border-border bg-secondary/40 px-5 py-3">
                 <div className="flex items-center gap-3 font-mono text-sm">
@@ -531,7 +551,8 @@ function WorksPage() {
                   </div>
                 </div>
               </div>
-            </article>
+              </article>
+            </SpotlightCard>
           </Reveal>
         ))}
       </div>
