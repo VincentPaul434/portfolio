@@ -1,5 +1,8 @@
 import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
+import GooeyNav from "@/components/GooeyNav"
+import InfiniteMenu from "@/components/InfiniteMenu"
+import TextType from "@/components/TextType"
 import {
   ArrowRight,
   ArrowUpRight,
@@ -29,31 +32,12 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ]
 
-const railItems = ["HOME", "ABOUT", "SKILLS", "PROJECTS", "EXPERIENCE", "CONTACT"]
+const desktopNavItems = navItems.slice(1)
 
 const metrics = [
   { value: "03", label: "featured builds" },
   { value: "2021", label: "started IT at CIT-U" },
   { value: "Cebu", label: "open to remote work" },
-]
-
-const stack = [
-  "React",
-  "Next.js",
-  "JavaScript",
-  "TypeScript",
-  "Python",
-  "Java",
-  "Spring Boot",
-  "Tailwind",
-  "Node.js",
-  "PostgreSQL",
-  "MongoDB",
-  "Docker",
-  "Git",
-  "Firebase",
-  "Vite",
-  "Figma",
 ]
 
 const stackMarqueeItems = [
@@ -76,6 +60,33 @@ const stackMarqueeItems = [
 ]
 
 const stackMarqueeLoop = [...stackMarqueeItems, ...stackMarqueeItems]
+
+const stackOverviewItems = [
+  {
+    index: "01",
+    title: "Frontend",
+    description: "Interfaces I use to make products feel clear, fast, and steady under real use.",
+    tools: ["React", "Next.js", "TypeScript", "Tailwind"],
+  },
+  {
+    index: "02",
+    title: "Backend",
+    description: "Server-side work focused on practical logic, readable APIs, and maintainable structure.",
+    tools: ["Node.js", "Spring Boot", "Java", "Python"],
+  },
+  {
+    index: "03",
+    title: "Data",
+    description: "Storage and service layers I reach for when the app needs solid persistence and sync.",
+    tools: ["PostgreSQL", "MongoDB", "Firebase", "Docker"],
+  },
+  {
+    index: "04",
+    title: "Workflow",
+    description: "Tools that help me design, iterate, and ship with less friction from idea to release.",
+    tools: ["Git", "Vite", "Figma", "JavaScript"],
+  },
+]
 
 const projects = [
   {
@@ -281,23 +292,6 @@ function Reveal({ className = "", delay = 0, children, ...rest }) {
   )
 }
 
-function SectionRail({ active }) {
-  return (
-    <div className="section-rail" aria-hidden="true">
-      {railItems.map((item) =>
-        item === active ? (
-          <span key={item} className="rail-active">
-            <span>{item}</span>
-            <i />
-          </span>
-        ) : (
-          <span key={item} className="rail-dot" />
-        ),
-      )}
-    </div>
-  )
-}
-
 function SectionIntro({ eyebrow, title, muted, copy, dark = false, centered = false }) {
   const mutedIndex = muted ? title.indexOf(muted) : -1
   const before = mutedIndex >= 0 ? title.slice(0, mutedIndex) : title
@@ -335,14 +329,19 @@ function Header() {
         <BrandMark />
 
         <nav className="desktop-nav" aria-label="Primary">
-          {navItems.slice(1).map((item) => (
-            <a key={item.href} href={item.href} className="nav-pill">
-              {item.label}
-            </a>
-          ))}
+          <GooeyNav
+            items={desktopNavItems}
+            initialActiveIndex={0}
+            animationTime={560}
+            particleCount={12}
+            particleDistances={[72, 14]}
+            particleR={84}
+            timeVariance={220}
+            colors={[1, 1, 1, 1]}
+          />
         </nav>
 
-        <Button asChild className="header-cta">
+        <Button asChild className="header-cta offset-hover-button">
           <a href="/r/Resume_Vincent_Paul_Dumangcas.docx" download="Resume_Vincent_Paul_Dumangcas.docx">
             Resume
             <Download className="h-4 w-4" />
@@ -365,10 +364,6 @@ function HeroSection() {
   return (
     <section id="top" className="hero-section">
       <div className="hero-grid-bg" aria-hidden="true" />
-      <div className="hero-shape shape-one" aria-hidden="true" />
-      <div className="hero-shape shape-two" aria-hidden="true" />
-      <div className="hero-shape shape-three" aria-hidden="true" />
-      <div className="hero-shape shape-four" aria-hidden="true" />
 
       <div className="content-shell hero-shell">
         <Reveal className="hero-kicker-row">
@@ -377,18 +372,22 @@ function HeroSection() {
         </Reveal>
 
         <Reveal delay={80} className="hero-stage">
-          <h1 className="hero-name">
-            <span>Vincent Paul</span>
-            <span>Dumangcas</span>
-          </h1>
+          <TextType
+            as="h1"
+            className="hero-name"
+            text={"Vincent Paul\nDumangcas"}
+            typingSpeed={90}
+            initialDelay={240}
+            pauseDuration={2200}
+            deletingSpeed={40}
+            loop={false}
+            showCursor
+            cursorCharacter="_"
+            cursorClassName="hero-name-cursor"
+            startOnVisible
+            variableSpeed={{ min: 70, max: 120 }}
+          />
 
-          <div className="hero-portrait" aria-label="Portrait of Vincent Paul Dumangcas">
-            <img src="/profile-photo.jpg" alt="Vincent Paul Dumangcas" />
-          </div>
-
-          <p className="hero-command">
-            <span>$</span> building useful web apps
-          </p>
         </Reveal>
 
         <Reveal delay={160} className="hero-bottom">
@@ -428,7 +427,6 @@ function HeroSection() {
 function AboutSection() {
   return (
     <section id="about" className="band band-light">
-      <SectionRail active="ABOUT" />
       <div className="content-shell">
         <Reveal>
           <SectionIntro
@@ -440,18 +438,8 @@ function AboutSection() {
         </Reveal>
 
         <div className="about-layout">
-          <Reveal delay={100} className="about-visual">
-            <div className="photo-deck" aria-hidden="true">
-              <div className="photo-card photo-card-back" />
-              <div className="photo-card photo-card-mid" />
-              <img className="photo-card photo-card-front" src="/profile-photo.jpg" alt="" />
-            </div>
-          </Reveal>
-
-          <Reveal delay={180} className="about-copy">
-            <p className="lead-line">
-              I care about software that reads clearly before it tries to impress.
-            </p>
+          <Reveal delay={120} className="about-copy">
+            <p className="about-intro">I care about software that reads clearly before it tries to impress.</p>
             <p>
               Most of my work so far has been around turning real requirements into frontend flows,
               backend logic, and deployable systems instead of polished screenshots only.
@@ -460,10 +448,6 @@ function AboutSection() {
               I like projects where the small decisions matter: forms, tables, role-based access,
               labels, empty states, and the pieces that make software feel calm under actual use.
             </p>
-            <blockquote>
-              Currently seeking opportunities where I can contribute, learn, and grow in a
-              professional engineering environment.
-            </blockquote>
 
             <div className="about-actions">
               <Button asChild className="dark-button">
@@ -476,17 +460,6 @@ function AboutSection() {
                 GitHub
                 <ArrowRight className="h-4 w-4" />
               </a>
-            </div>
-
-            <div className="about-meta">
-              <span>
-                <MapPin className="h-4 w-4" />
-                Cebu City, Cebu
-              </span>
-              <span>
-                <Code2 className="h-4 w-4" />
-                React, Spring Boot, MySQL
-              </span>
             </div>
           </Reveal>
         </div>
@@ -518,7 +491,6 @@ function StackLoop() {
 function SkillsSection() {
   return (
     <section id="skills" className="band band-dark">
-      <SectionRail active="SKILLS" />
       <div className="content-shell">
         <Reveal>
           <SectionIntro
@@ -555,13 +527,7 @@ function SkillsSection() {
               <Database className="h-4 w-4" />
               <span>Stack overview</span>
             </div>
-            <div className="stack-cloud">
-              {stack.map((item) => (
-                <span key={item} className="stack-badge">
-                  {item}
-                </span>
-              ))}
-            </div>
+            <InfiniteMenu items={stackOverviewItems} speed={20} />
           </Reveal>
         </div>
       </div>
@@ -604,7 +570,6 @@ function ProjectPreview({ project, reverse = false }) {
 function ProjectsSection() {
   return (
     <section id="projects" className="band band-projects">
-      <SectionRail active="PROJECTS" />
       <div className="content-shell projects-shell">
         <Reveal className="projects-heading-block">
           <p className="section-eyebrow">What I&apos;ve built</p>
@@ -628,10 +593,12 @@ function ProjectsSection() {
 
                 <div className="project-showcase-copy">
                   <div className="project-showcase-meta">
-                    <span className="project-showcase-index">{project.id}</span>
                     <div className="project-showcase-tags">
                       {project.tags.map((tag) => (
-                        <span key={tag} className={`project-tag ${tag === "featured" ? "is-featured" : ""}`}>
+                        <span
+                          key={tag}
+                          className={`project-tag close-pill-hover ${tag === "featured" ? "is-featured" : ""}`}
+                        >
                           {tag}
                         </span>
                       ))}
@@ -648,14 +615,6 @@ function ProjectsSection() {
 
                   <p className="project-description">{project.description}</p>
 
-                  <ul className="project-feature-list">
-                    {project.features.slice(0, 3).map((feature) => (
-                      <li key={feature}>{feature}</li>
-                    ))}
-                  </ul>
-
-                  <p className="project-takeaway">{project.takeaway}</p>
-
                   <div className="project-tech">
                     {project.tech.map((item) => (
                       <span key={item} className="project-stack-item">
@@ -665,7 +624,12 @@ function ProjectsSection() {
                   </div>
 
                   <div className="project-links">
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-inline-link">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-inline-link offset-hover-button"
+                    >
                       Visit project
                       <ArrowUpRight className="h-4 w-4" />
                     </a>
@@ -675,7 +639,7 @@ function ProjectsSection() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="project-inline-link muted"
+                        className="project-inline-link muted offset-hover-button"
                       >
                         Source
                         <Github className="h-4 w-4" />
@@ -695,7 +659,6 @@ function ProjectsSection() {
 function ExperienceSection() {
   return (
     <section id="experience" className="band band-light">
-      <SectionRail active="EXPERIENCE" />
       <div className="content-shell">
         <Reveal>
           <SectionIntro
@@ -751,7 +714,6 @@ function ContactSection() {
 
   return (
     <section id="contact" className="band band-contact">
-      <SectionRail active="CONTACT" />
       <div className="content-shell">
         <Reveal>
           <SectionIntro
@@ -765,25 +727,27 @@ function ContactSection() {
 
         <div className="contact-layout">
           <Reveal delay={120}>
-            <div className="contact-list">
-              {contactItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="contact-row"
-                >
-                  <span className="contact-row-icon">
-                    <item.icon className="h-4 w-4" />
-                  </span>
-                  <span className="contact-row-copy">
-                    <span className="contact-row-label">{item.label}</span>
-                    <span className="contact-row-value">{item.value}</span>
-                  </span>
-                  <ArrowRight className="contact-row-arrow h-4 w-4" />
-                </a>
-              ))}
+            <div className="contact-methods-shell">
+              <div className="contact-list">
+                {contactItems.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="contact-row"
+                  >
+                    <span className="contact-row-icon">
+                      <item.icon className="h-4 w-4" />
+                    </span>
+                    <span className="contact-row-copy">
+                      <span className="contact-row-label">{item.label}</span>
+                      <span className="contact-row-value">{item.value}</span>
+                    </span>
+                    <ArrowRight className="contact-row-arrow h-4 w-4" />
+                  </a>
+                ))}
+              </div>
 
               <button type="button" className="contact-copy-button" onClick={handleCopyEmail}>
                 <Copy className="h-4 w-4" />
@@ -800,10 +764,10 @@ function ContactSection() {
                 connect, I&apos;d love to hear from you.
               </p>
               <div className="contact-cta-actions">
-                <Button asChild className="light-button">
+                <Button asChild className="light-button contact-cta-button">
                   <a href="mailto:dumangcasvincentpaul@gmail.com">Send me an email</a>
                 </Button>
-                <Button asChild variant="outline" className="contact-outline">
+                <Button asChild variant="outline" className="contact-outline contact-cta-button">
                   <a href="https://github.com/VincentPaul434" target="_blank" rel="noopener noreferrer">
                     View GitHub
                   </a>
