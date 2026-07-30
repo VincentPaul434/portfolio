@@ -1353,10 +1353,11 @@ function SettingsApp({
 
       <Panel title="WALLPAPER">
         <p className="setting-help">
-          Choose a flat desktop, a subtle grid, or Vincent&apos;s archive photo.
+          Choose the sunrise landscape, a flat desktop, a subtle grid, or Vincent&apos;s archive photo.
         </p>
         <div className="wallpaper-options">
           {[
+            { id: "nature", label: "Golden hills" },
             { id: "solid", label: "Solid moss" },
             { id: "grid", label: "System grid" },
             { id: "photo", label: "VPD archive" },
@@ -1798,7 +1799,10 @@ function App() {
   const [mode, setMode] = useState(saved?.mode === "dark" ? "dark" : "light")
   const [palette, setPalette] = useState(["moss", "pine", "sage"].includes(saved?.palette) ? saved.palette : "moss")
   const [wallpaper, setWallpaper] = useState(
-    ["solid", "grid", "photo"].includes(saved?.wallpaper) ? saved.wallpaper : "solid",
+    saved?.wallpaperVersion === 2 &&
+      ["solid", "grid", "photo", "nature"].includes(saved?.wallpaper)
+      ? saved.wallpaper
+      : "nature",
   )
   const [brightness, setBrightness] = useState(
     Number.isFinite(saved?.brightness) ? saved.brightness : 100,
@@ -2117,6 +2121,7 @@ function App() {
       mode,
       palette,
       wallpaper,
+      wallpaperVersion: 2,
       brightness,
     }
     try {

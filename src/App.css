@@ -480,7 +480,15 @@ textarea:focus-visible {
   inset: 36px 0 0;
   overflow: hidden;
   background-color: var(--desktop);
+  background-position: center;
+  background-size: cover;
   filter: brightness(var(--desktop-brightness));
+}
+
+.portfolio-os[data-wallpaper="nature"] .desktop-workspace {
+  background-image:
+    linear-gradient(100deg, rgba(15, 41, 34, 0.42) 0%, rgba(15, 41, 34, 0.12) 48%, rgba(15, 41, 34, 0.28) 100%),
+    url("/nature-sun-wallpaper.png");
 }
 
 .portfolio-os[data-wallpaper="grid"] .desktop-workspace {
@@ -512,7 +520,8 @@ textarea:focus-visible {
   user-select: none;
 }
 
-.portfolio-os[data-wallpaper="photo"] .wallpaper-mark {
+.portfolio-os[data-wallpaper="photo"] .wallpaper-mark,
+.portfolio-os[data-wallpaper="nature"] .wallpaper-mark {
   display: none;
 }
 
@@ -2192,7 +2201,7 @@ textarea:focus-visible {
 
 .wallpaper-options {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   padding: 10px 11px 11px;
 }
@@ -2223,6 +2232,14 @@ textarea:focus-visible {
     linear-gradient(90deg, color-mix(in srgb, var(--accent) 28%, transparent) 1px, transparent 1px),
     var(--desktop);
   background-size: 15px 15px;
+}
+
+.preview-nature > span {
+  background-image:
+    linear-gradient(rgba(15, 41, 34, 0.16), rgba(15, 41, 34, 0.16)),
+    url("/nature-sun-wallpaper.png");
+  background-position: center;
+  background-size: cover;
 }
 
 .preview-photo > span {
