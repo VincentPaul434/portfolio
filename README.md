@@ -31,14 +31,18 @@ The project includes Vercel history fallbacks for app and project routes.
 ```text
 src/
 ├── components/
+│   ├── apps/         # About, work, contact, settings, and terminal windows
 │   ├── common/       # Reusable portfolio components
+│   ├── desktop/      # Window frame, dock, search, and desktop chrome
 │   └── ui/           # Small UI primitives
-├── config/           # Contact links and application constants
+├── config/           # Contact links, window metadata, and app constants
+├── data/             # Projects, experience, stack, and text-file content
 ├── hooks/            # Shared React hooks
 ├── lib/              # Shared library helpers
 ├── pages/
-│   └── Portfolio/    # Route-level portfolio workspace
+│   └── Portfolio/    # Route-level state and workspace composition
 ├── styles/           # Global application styles
+├── utils/            # Desktop state, routing, and window geometry helpers
 ├── App.jsx           # Root application shell
 └── main.jsx          # Vite entry point
 ```
