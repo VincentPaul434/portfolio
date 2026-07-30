@@ -1,212 +1,119 @@
-import { useEffect, useRef } from "react"
-import { Button } from "@/components/ui/button"
-import GooeyNav from "@/components/GooeyNav"
-import InfiniteMenu from "@/components/InfiniteMenu"
-import TextType from "@/components/TextType"
+import { createElement, useEffect, useRef, useState } from "react"
 import {
-  ArrowRight,
+  ArrowDown,
   ArrowUpRight,
-  Code2,
   Copy,
-  Database,
-  Download,
   Github,
-  GraduationCap,
-  Layers,
-  Lightbulb,
   Linkedin,
   Mail,
   MapPin,
+  Menu,
   Phone,
-  Server,
-  Target,
-  Wrench,
+  X,
 } from "lucide-react"
 
 const navItems = [
   { label: "Home", href: "#top" },
+  { label: "Projects", href: "#projects" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
-]
-
-const desktopNavItems = navItems.slice(1)
-
-const metrics = [
-  { value: "03", label: "featured builds" },
-  { value: "2021", label: "started IT at CIT-U" },
-  { value: "Cebu", label: "open to remote work" },
-]
-
-const stackMarqueeItems = [
-  { label: "React", icon: "react" },
-  { label: "Next.js", icon: "nextjs" },
-  { label: "JavaScript", icon: "javascript" },
-  { label: "TypeScript", icon: "typescript" },
-  { label: "Python", icon: "python" },
-  { label: "Java", icon: "java" },
-  { label: "Spring Boot", icon: "spring" },
-  { label: "Tailwind CSS", icon: "tailwind" },
-  { label: "Node.js", icon: "nodejs" },
-  { label: "PostgreSQL", icon: "postgres" },
-  { label: "MongoDB", icon: "mongodb" },
-  { label: "Docker", icon: "docker" },
-  { label: "Git", icon: "git" },
-  { label: "Firebase", icon: "firebase" },
-  { label: "Vite", icon: "vite" },
-  { label: "Figma", icon: "figma" },
-]
-
-const stackMarqueeLoop = [...stackMarqueeItems, ...stackMarqueeItems]
-
-const stackOverviewItems = [
-  {
-    index: "01",
-    title: "Frontend",
-    description: "Interfaces I use to make products feel clear, fast, and steady under real use.",
-    tools: ["React", "Next.js", "TypeScript", "Tailwind"],
-  },
-  {
-    index: "02",
-    title: "Backend",
-    description: "Server-side work focused on practical logic, readable APIs, and maintainable structure.",
-    tools: ["Node.js", "Spring Boot", "Java", "Python"],
-  },
-  {
-    index: "03",
-    title: "Data",
-    description: "Storage and service layers I reach for when the app needs solid persistence and sync.",
-    tools: ["PostgreSQL", "MongoDB", "Firebase", "Docker"],
-  },
-  {
-    index: "04",
-    title: "Workflow",
-    description: "Tools that help me design, iterate, and ship with less friction from idea to release.",
-    tools: ["Git", "Vite", "Figma", "JavaScript"],
-  },
 ]
 
 const projects = [
   {
     id: "01",
     title: "CIT NurseTracer",
-    type: "Live system",
+    type: "Healthcare operations",
     role: "Full-stack developer",
     period: "2025",
-    tags: ["healthcare", "operations", "dashboard", "featured"],
-    previewTone: "violet",
     description:
       "A ward-assignment app that makes nursing handoffs easier to follow than scattered chat updates.",
-    problem:
-      "Assignments were being tracked informally, which made it easy to lose context during a shift handoff.",
-    features: [
-      "Shift and ward assignment views",
-      "Role-based access for staff",
-      "Searchable activity history",
-      "Mobile-friendly bedside layout",
-    ],
-    takeaway:
-      "The biggest wins came from readable labels, sensible defaults, and reducing taps during stressful moments.",
-    tech: ["React", "Tailwind", "Vercel"],
+    tags: ["React", "Tailwind", "Vercel"],
     link: "https://citnursetracer.vercel.app/",
-    github: "",
+    visual: "nurse",
+    visualLabel: "Ward / Trace",
   },
   {
     id: "02",
-    title: "Synapse UI",
-    type: "Open source",
-    role: "Component system",
-    period: "2025",
-    tags: ["ui kit", "frontend", "design system", "featured"],
-    previewTone: "amber",
+    title: "ETC Cars",
+    type: "Dealership platform",
+    role: "Full-stack developer",
+    period: "2026",
     description:
-      "A reusable component kit for React projects so I am not redesigning basic interface patterns from scratch every time.",
-    problem:
-      "Starting fresh on every project meant rebuilding the same primitives with slight inconsistencies.",
-    features: [
-      "Composable components with sane defaults",
-      "Keyboard-friendly interactions",
-      "Theming with CSS variables",
-      "Usage examples for quick reuse",
-    ],
-    takeaway:
-      "Choosing strong defaults is harder than exposing more props. Every option becomes something to support later.",
-    tech: ["React", "Tailwind", "Components"],
-    link: "https://github.com/princeprog/synapse-ui",
-    github: "https://github.com/princeprog/synapse-ui",
+      "A responsive dealership workspace that brings vehicles, leads, sales, expenses, and follow-ups into one clear system.",
+    tags: ["React", "Dashboard", "Responsive UI"],
+    image: "/projects/etc-cars.png",
+    visual: "cars",
   },
   {
     id: "03",
     title: "Poultry Prophet",
-    type: "Full stack",
+    type: "Breeding analytics",
     role: "Full-stack developer",
     period: "2025",
-    tags: ["analytics", "scoring", "platform", "featured"],
-    previewTone: "emerald",
     description:
-      "A breeding-management platform for game fowl operations that tracks bird development and computes readiness scores.",
-    problem:
-      "Health and readiness were tracked manually, making month-five selection inconsistent and difficult to justify later.",
-    features: [
-      "Health records by batch and bird",
-      "Computed indicators with alerts",
-      "Ranked readiness scoring",
-      "Exports plus real-time updates",
-    ],
-    takeaway:
-      "Keeping the scoring logic on the back end made the system easier to trust, test, and reason about.",
-    tech: ["Next.js", "React", "Spring Boot", "Postgres"],
+      "A management platform that tracks bird development and computes transparent readiness scores for month-five selection.",
+    tags: ["Next.js", "Spring Boot", "Postgres"],
     link: "https://github.com/VincentPaul434/poultry-prophet-frontend",
-    github: "https://github.com/VincentPaul434/poultry-prophet-backend",
-  },
-]
-
-const experience = [
-  {
-    icon: GraduationCap,
-    period: "2021 to present",
-    title: "BS Information Technology at CIT-U",
-    detail:
-      "Built my foundation through classwork, self-study, and experiments that slowly turned into real project work.",
-  },
-  {
-    icon: Code2,
-    period: "2025",
-    title: "Started shipping full-stack student projects",
-    detail:
-      "Handled data models, authentication, UI states, and deployment instead of stopping at mockups or isolated screens.",
-  },
-  {
-    icon: Target,
-    period: "Now",
-    title: "Looking for real product work",
-    detail:
-      "Aiming for an internship, junior role, or contract work where I can contribute and learn from stronger engineers.",
+    secondaryLink: "https://github.com/VincentPaul434/poultry-prophet-backend",
+    visual: "poultry",
+    visualLabel: "05 / Ready",
   },
 ]
 
 const services = [
   {
-    icon: Layers,
+    number: "01",
     title: "Frontend implementation",
-    detail: "Responsive React interfaces that feel clear, structured, and usable on real screens.",
+    detail: "Responsive React interfaces with clear hierarchy, useful states, and steady behavior on real screens.",
   },
   {
-    icon: Server,
+    number: "02",
     title: "Backend integration",
-    detail: "Spring Boot or Node-backed flows with auth, forms, tables, and database-connected features.",
+    detail: "Spring Boot and Node-backed flows that connect authentication, forms, tables, and business logic.",
   },
   {
-    icon: Wrench,
-    title: "Finishing incomplete builds",
-    detail: "Cleaning up rough UI, fixing bugs, and getting half-done projects closer to shippable.",
+    number: "03",
+    title: "Data systems",
+    detail: "Practical persistence with PostgreSQL, MongoDB, and Firebase, shaped around how the product is actually used.",
   },
   {
-    icon: Lightbulb,
-    title: "Calm problem solving",
-    detail: "Reading docs, tracing behavior, and working through unknowns with patience and accuracy.",
+    number: "04",
+    title: "Responsive UI",
+    detail: "Layouts that preserve meaning and momentum from compact phones to wide desktop workspaces.",
+  },
+  {
+    number: "05",
+    title: "Product debugging",
+    detail: "Careful tracing across components, requests, permissions, and data until the real cause becomes visible.",
+  },
+  {
+    number: "06",
+    title: "Finishing builds",
+    detail: "Turning rough or incomplete work into a coherent, maintainable release with fewer loose ends.",
+  },
+]
+
+const experience = [
+  {
+    period: "2021 — present",
+    title: "BS Information Technology at CIT-U",
+    detail:
+      "Building a foundation through coursework, self-study, and experiments that grew into real product work.",
+  },
+  {
+    period: "2025",
+    title: "Started shipping full-stack systems",
+    detail:
+      "Moved past isolated screens to handle data models, authentication, interface states, and deployment.",
+  },
+  {
+    period: "Now",
+    title: "Ready for the next real problem",
+    detail:
+      "Open to internships, junior roles, and contract work where I can contribute and keep learning quickly.",
   },
 ]
 
@@ -226,135 +133,183 @@ const contactItems = [
   {
     href: "https://github.com/VincentPaul434",
     label: "GitHub",
-    value: "github.com/VincentPaul434",
+    value: "@VincentPaul434",
     icon: Github,
   },
   {
     href: "https://www.linkedin.com/in/vincent-paul-dumangcas-74063a365/",
     label: "LinkedIn",
-    value: "vincent-paul-dumangcas",
+    value: "Vincent Paul Dumangcas",
     icon: Linkedin,
   },
 ]
 
+const stack = [
+  "React",
+  "Next.js",
+  "JavaScript",
+  "TypeScript",
+  "Spring Boot",
+  "Java",
+  "Node.js",
+  "PostgreSQL",
+  "MongoDB",
+  "Docker",
+  "Firebase",
+  "Figma",
+]
+
 function ScrollProgress() {
-  const ref = useRef(null)
+  const progressRef = useRef(null)
 
   useEffect(() => {
-    const onScroll = () => {
-      const doc = document.documentElement
-      const max = doc.scrollHeight - doc.clientHeight
-      const progress = max > 0 ? doc.scrollTop / max : 0
-      if (ref.current) {
-        ref.current.style.transform = `scaleX(${progress})`
+    const update = () => {
+      const root = document.documentElement
+      const available = root.scrollHeight - root.clientHeight
+      const progress = available > 0 ? root.scrollTop / available : 0
+
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${progress})`
       }
     }
 
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    window.addEventListener("resize", onScroll)
+    update()
+    window.addEventListener("scroll", update, { passive: true })
+    window.addEventListener("resize", update)
 
     return () => {
-      window.removeEventListener("scroll", onScroll)
-      window.removeEventListener("resize", onScroll)
+      window.removeEventListener("scroll", update)
+      window.removeEventListener("resize", update)
     }
   }, [])
 
-  return <div ref={ref} className="scroll-progress" aria-hidden="true" />
+  return <span ref={progressRef} className="scroll-progress" aria-hidden="true" />
 }
 
-function Reveal({ className = "", delay = 0, children, ...rest }) {
-  const ref = useRef(null)
+function Reveal({ as: Tag = "div", className = "", delay = 0, children, ...props }) {
+  const revealRef = useRef(null)
 
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
+    const element = revealRef.current
+    if (!element) return undefined
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.style.transitionDelay = `${delay}ms`
-          el.classList.add("in-view")
-          observer.unobserve(el)
+          element.style.setProperty("--reveal-delay", `${delay}ms`)
+          element.classList.add("is-visible")
+          observer.unobserve(element)
         }
       },
-      { threshold: 0.14 },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
     )
 
-    observer.observe(el)
+    observer.observe(element)
     return () => observer.disconnect()
   }, [delay])
 
-  return (
-    <div ref={ref} className={`reveal ${className}`} {...rest}>
-      {children}
-    </div>
+  return createElement(
+    Tag,
+    { ref: revealRef, className: `reveal ${className}`, ...props },
+    children,
   )
 }
 
-function SectionIntro({ eyebrow, title, muted, copy, dark = false, centered = false }) {
-  const mutedIndex = muted ? title.indexOf(muted) : -1
-  const before = mutedIndex >= 0 ? title.slice(0, mutedIndex) : title
-  const after = mutedIndex >= 0 ? title.slice(mutedIndex + muted.length) : ""
-
+function SectionHeading({ number, title, light = false }) {
   return (
-    <div className={`section-intro ${centered ? "is-centered" : ""} ${dark ? "is-dark" : ""}`}>
-      <p className="section-eyebrow">{eyebrow}</p>
-      <h2>
-        {before}
-        {mutedIndex >= 0 ? <span>{muted}</span> : null}
-        {after}
-      </h2>
-      {copy ? <p className="section-copy">{copy}</p> : null}
-    </div>
+    <Reveal className={`section-heading ${light ? "is-light" : ""}`}>
+      <div className="section-heading-copy">
+        <span className="section-number">/{number}</span>
+        <h2>{title}</h2>
+      </div>
+      <span className="section-rule" aria-hidden="true" />
+    </Reveal>
   )
 }
 
 function BrandMark() {
   return (
-    <a href="#top" className="brand-mark" aria-label="Go to top">
-      <span className="brand-initials">VPD</span>
-      <span className="brand-copy">
-        <span className="brand-title">Vincent</span>
-        <span className="brand-subtitle">web apps, end to end</span>
+    <a className="brand-mark" href="#top" aria-label="Vincent Paul Dumangcas — back to top">
+      <span className="brand-symbol" aria-hidden="true">
+        VP
+      </span>
+      <span className="brand-name">
+        Vincent Paul
+        <small>Full-stack developer</small>
       </span>
     </a>
   )
 }
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuButtonRef = useRef(null)
+
+  useEffect(() => {
+    document.body.classList.toggle("menu-open", menuOpen)
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape" && menuOpen) {
+        setMenuOpen(false)
+        menuButtonRef.current?.focus()
+      }
+    }
+
+    window.addEventListener("keydown", onKeyDown)
+    return () => {
+      document.body.classList.remove("menu-open")
+      window.removeEventListener("keydown", onKeyDown)
+    }
+  }, [menuOpen])
+
+  const closeMenu = () => setMenuOpen(false)
+
   return (
     <header className="site-header">
-      <div className="site-header-inner">
+      <div className="header-inner">
         <BrandMark />
 
-        <nav className="desktop-nav" aria-label="Primary">
-          <GooeyNav
-            items={desktopNavItems}
-            initialActiveIndex={0}
-            animationTime={560}
-            particleCount={12}
-            particleDistances={[72, 14]}
-            particleR={84}
-            timeVariance={220}
-            colors={[1, 1, 1, 1]}
-          />
+        <nav className="desktop-nav" aria-label="Primary navigation">
+          {navItems.slice(1).map((item) => (
+            <a key={item.href} href={item.href}>
+              {item.label}
+            </a>
+          ))}
         </nav>
 
-        <Button asChild className="header-cta offset-hover-button">
-          <a href="/r/Resume_Vincent_Paul_Dumangcas.docx" download="Resume_Vincent_Paul_Dumangcas.docx">
-            Resume
-            <Download className="h-4 w-4" />
-          </a>
-        </Button>
+        <button
+          ref={menuButtonRef}
+          type="button"
+          className="menu-button"
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-controls="mobile-navigation"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </button>
       </div>
 
-      <nav className="mobile-nav" aria-label="Mobile primary">
-        {navItems.map((item) => (
-          <a key={item.href} href={item.href} className="nav-pill mobile-nav-pill">
-            {item.label}
-          </a>
-        ))}
+      <nav
+        id="mobile-navigation"
+        className={`mobile-navigation ${menuOpen ? "is-open" : ""}`}
+        aria-label="Mobile navigation"
+        aria-hidden={!menuOpen}
+      >
+        <div className="mobile-navigation-inner">
+          {navItems.map((item, index) => (
+            <a
+              key={item.href}
+              href={item.href}
+              tabIndex={menuOpen ? 0 : -1}
+              onClick={closeMenu}
+            >
+              <span>0{index + 1}</span>
+              {item.label}
+            </a>
+          ))}
+          <p>Cebu, Philippines · Available for thoughtful product work.</p>
+        </div>
       </nav>
     </header>
   )
@@ -363,62 +318,146 @@ function Header() {
 function HeroSection() {
   return (
     <section id="top" className="hero-section">
-      <div className="hero-grid-bg" aria-hidden="true" />
+      <div className="kinetic-type" aria-hidden="true">
+        <span>V</span>
+        <span>P</span>
+        <span>D</span>
+        <span>&#123;</span>
+        <span>/</span>
+        <span>&#125;</span>
+      </div>
 
-      <div className="content-shell hero-shell">
-        <Reveal className="hero-kicker-row">
-          <span className="status-dot" aria-hidden="true" />
-          <span>Cebu-based IT student building practical web apps</span>
+      <div className="page-shell hero-inner">
+        <div className="hero-copy">
+          <Reveal as="p" className="hero-greeting">
+            Hi, I&apos;m Vincent Paul Dumangcas,
+          </Reveal>
+          <Reveal as="h1" className="hero-title" delay={80}>
+            <span>Full-stack developer</span>
+            <span className="accent-line">building useful systems</span>
+            <span>from Cebu.</span>
+          </Reveal>
+        </div>
+
+        <Reveal className="hero-footer" delay={160}>
+          <p>
+            I turn real requirements into clear interfaces, dependable backend logic, and products
+            that hold together beyond the demo.
+          </p>
+          <a href="#projects" className="scroll-link">
+            See selected work
+            <ArrowDown aria-hidden="true" />
+          </a>
         </Reveal>
+      </div>
+    </section>
+  )
+}
 
-        <Reveal delay={80} className="hero-stage">
-          <TextType
-            as="h1"
-            className="hero-name"
-            text={"Vincent Paul\nDumangcas"}
-            typingSpeed={90}
-            initialDelay={240}
-            pauseDuration={2200}
-            deletingSpeed={40}
-            loop={false}
-            showCursor
-            cursorCharacter="_"
-            cursorClassName="hero-name-cursor"
-            startOnVisible
-            variableSpeed={{ min: 70, max: 120 }}
-          />
+function ProjectVisual({ project }) {
+  if (project.image) {
+    return (
+      <figure className="project-visual has-image">
+        <img
+          src={project.image}
+          alt="ETC Cars dealership dashboard shown on desktop, tablet, laptop, and mobile screens"
+          width="1672"
+          height="941"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    )
+  }
 
-        </Reveal>
+  return (
+    <figure className={`project-visual visual-${project.visual}`} aria-label={`${project.title} graphic preview`}>
+      <span className="preview-index">{project.id}</span>
+      <strong>{project.visualLabel}</strong>
+      <div className="preview-window" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+        <i />
+        <i />
+        <i />
+      </div>
+    </figure>
+  )
+}
 
-        <Reveal delay={160} className="hero-bottom">
-          <div className="hero-summary">
-            <p>
-              I build web apps from the database to the browser, with a strong pull toward clean
-              structure, useful interfaces, and work that feels grounded in real use.
-            </p>
-          </div>
+function ProjectCard({ project, index }) {
+  const cardContent = (
+    <>
+      <div className="project-card-heading">
+        <div>
+          <span className="project-type">{project.type}</span>
+          <h3>{project.title}</h3>
+        </div>
+        <span className="project-year">{project.period}</span>
+      </div>
 
-          <div className="hero-actions">
-            <Button asChild className="hero-primary">
-              <a href="#projects">
-                See projects
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </Button>
-            <Button asChild variant="outline" className="hero-secondary">
-              <a href="#contact">Let&apos;s talk</a>
-            </Button>
-          </div>
-        </Reveal>
+      <ProjectVisual project={project} />
 
-        <Reveal delay={220} className="hero-metrics">
-          {metrics.map((item) => (
-            <div key={item.label} className="metric-card">
-              <span className="metric-value">{item.value}</span>
-              <span className="metric-label">{item.label}</span>
-            </div>
+      <div className="project-card-footer">
+        <p>{project.description}</p>
+        <div className="project-tags" aria-label={`${project.title} technology stack`}>
+          {project.tags.map((tag) => (
+            <span key={tag}>{tag}</span>
           ))}
-        </Reveal>
+        </div>
+        {project.link ? (
+          <span className="project-visit">
+            View project
+            <ArrowUpRight aria-hidden="true" />
+          </span>
+        ) : (
+          <span className="project-visit is-muted">Private project</span>
+        )}
+      </div>
+    </>
+  )
+
+  return (
+    <Reveal
+      as="article"
+      delay={(index % 2) * 80}
+      className={`project-card ${index === projects.length - 1 ? "is-wide" : ""}`}
+    >
+      {project.link ? (
+        <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title}`}>
+          {cardContent}
+        </a>
+      ) : (
+        cardContent
+      )}
+
+      {project.secondaryLink ? (
+        <a
+          className="secondary-project-link"
+          href={project.secondaryLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Backend source
+          <ArrowUpRight aria-hidden="true" />
+        </a>
+      ) : null}
+    </Reveal>
+  )
+}
+
+function ProjectsSection() {
+  return (
+    <section id="projects" className="work-section">
+      <div className="page-shell">
+        <SectionHeading number="01" title="My work" light />
+
+        <div className="project-grid">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.title} project={project} index={index} />
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -426,229 +465,79 @@ function HeroSection() {
 
 function AboutSection() {
   return (
-    <section id="about" className="band band-light">
-      <div className="content-shell">
-        <Reveal>
-          <SectionIntro
-            eyebrow="Get to know me"
-            title="About Me"
-            muted="Me"
-            copy="I am still early in my career, but I am already serious about building software that survives real use."
-          />
-        </Reveal>
+    <section id="about" className="approach-section">
+      <div className="approach-type" aria-hidden="true">
+        END TO END
+      </div>
 
-        <div className="about-layout">
-          <Reveal delay={120} className="about-copy">
-            <p className="about-intro">I care about software that reads clearly before it tries to impress.</p>
+      <div className="page-shell approach-inner">
+        <SectionHeading number="02" title="My approach" />
+
+        <div className="approach-layout">
+          <Reveal as="p" className="approach-statement">
+            Software should read clearly before it tries to impress.
+          </Reveal>
+
+          <Reveal className="approach-copy" delay={100}>
             <p>
-              Most of my work so far has been around turning real requirements into frontend flows,
-              backend logic, and deployable systems instead of polished screenshots only.
+              I like projects where the small decisions matter: forms, tables, permissions, empty
+              states, and the unglamorous details that make a product feel calm under real use.
             </p>
             <p>
-              I like projects where the small decisions matter: forms, tables, role-based access,
-              labels, empty states, and the pieces that make software feel calm under actual use.
+              My work crosses the whole path from data and backend logic to responsive frontend
+              flows. That wider view helps me keep the pieces understandable—and make better
+              tradeoffs when requirements change.
             </p>
+          </Reveal>
+        </div>
 
-            <div className="about-actions">
-              <Button asChild className="dark-button">
-                <a href="mailto:dumangcasvincentpaul@gmail.com">
-                  <Mail className="h-4 w-4" />
-                  Get in touch
-                </a>
-              </Button>
-              <a className="text-link" href="https://github.com/VincentPaul434" target="_blank" rel="noopener noreferrer">
-                GitHub
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
+        <div className="approach-metrics">
+          <Reveal className="approach-metric">
+            <strong>03</strong>
+            <span>featured systems</span>
+          </Reveal>
+          <Reveal className="approach-metric" delay={70}>
+            <strong>2021</strong>
+            <span>started IT at CIT-U</span>
+          </Reveal>
+          <Reveal className="approach-metric" delay={140}>
+            <strong>Cebu</strong>
+            <span>open to remote work</span>
           </Reveal>
         </div>
       </div>
     </section>
-  )
-}
-
-function StackLoop() {
-  return (
-    <div className="stack-loop-shell" aria-label="Animated technology stack">
-      <div className="stack-loop-track">
-        {stackMarqueeLoop.map((item, index) => (
-          <figure key={`${item.label}-${index}`} className="stack-logo-mark" aria-label={item.label}>
-            <img
-              src={`https://skillicons.dev/icons?i=${item.icon}&theme=dark`}
-              alt={item.label}
-              loading="lazy"
-              decoding="async"
-              className="stack-logo-image"
-            />
-          </figure>
-        ))}
-      </div>
-    </div>
   )
 }
 
 function SkillsSection() {
   return (
-    <section id="skills" className="band band-dark">
-      <div className="content-shell">
-        <Reveal>
-          <SectionIntro
-            eyebrow="What I work with"
-            title="My Skills"
-            muted="Skills"
-            copy="The stack I reach for most often when building full-stack products and practical frontend systems."
-            dark
-            centered
-          />
-        </Reveal>
+    <section id="skills" className="skills-section">
+      <div className="page-shell">
+        <SectionHeading number="03" title="What I do" light />
 
-        <Reveal delay={100}>
-          <StackLoop />
-        </Reveal>
-
-        <div className="skills-layout">
-          <div className="service-grid">
-            {services.map((service, index) => (
-              <Reveal key={service.title} delay={index * 90} className="service-reveal">
-                <article className="service-card">
-                  <span className="service-icon">
-                    <service.icon className="h-4 w-4" />
-                  </span>
-                  <h3>{service.title}</h3>
-                  <p>{service.detail}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={180} className="stack-panel">
-            <div className="stack-panel-head">
-              <Database className="h-4 w-4" />
-              <span>Stack overview</span>
-            </div>
-            <InfiniteMenu items={stackOverviewItems} speed={20} />
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function ProjectPreview({ project, reverse = false }) {
-  return (
-    <div className={`project-preview-stack ${reverse ? "is-reverse" : ""} tone-${project.previewTone}`}>
-      <div className="project-preview-card layer-back" aria-hidden="true" />
-      <div className="project-preview-card layer-mid" aria-hidden="true" />
-      <div className="project-preview-card layer-front">
-        <div className="preview-topbar">
-          <span className="preview-dot" />
-          <span className="preview-dot" />
-          <span className="preview-dot" />
-          <span className="preview-url">vincent.dev/{project.id}</span>
-        </div>
-        <div className="preview-body">
-          <div className="preview-hero">
-            <div className="preview-kicker">{project.title}</div>
-            <div className="preview-title-line" />
-            <div className="preview-title-line short" />
-            <div className="preview-action-line" />
-          </div>
-          <div className="preview-grid">
-            <div className="preview-block tall" />
-            <div className="preview-column">
-              <div className="preview-block" />
-              <div className="preview-block" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function ProjectsSection() {
-  return (
-    <section id="projects" className="band band-projects">
-      <div className="content-shell projects-shell">
-        <Reveal className="projects-heading-block">
-          <p className="section-eyebrow">What I&apos;ve built</p>
-          <h2 className="projects-title">
-            <span>Software</span>
-            <span>Projects</span>
-          </h2>
-          <p className="projects-intro">
-            Hover the stacked previews to fan them out. Each project stays grounded in the actual
-            problem, the build decisions, and what made the product useful.
-          </p>
-        </Reveal>
-
-        <div className="projects-list">
-          {projects.map((project, index) => (
-            <Reveal key={project.title} delay={index * 120} className="project-reveal">
-              <article className={`project-showcase-row ${index % 2 === 1 ? "is-reverse" : ""}`}>
-                <div className="project-showcase-visual">
-                  <ProjectPreview project={project} reverse={index % 2 === 1} />
-                </div>
-
-                <div className="project-showcase-copy">
-                  <div className="project-showcase-meta">
-                    <div className="project-showcase-tags">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className={`project-tag close-pill-hover ${tag === "featured" ? "is-featured" : ""}`}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="project-showcase-head">
-                    <div>
-                      <h3>{project.title}</h3>
-                      <p className="project-role">{project.role}</p>
-                    </div>
-                    <span className="project-period">{project.period}</span>
-                  </div>
-
-                  <p className="project-description">{project.description}</p>
-
-                  <div className="project-tech">
-                    {project.tech.map((item) => (
-                      <span key={item} className="project-stack-item">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="project-links">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-inline-link offset-hover-button"
-                    >
-                      Visit project
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
-
-                    {project.github ? (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-inline-link muted offset-hover-button"
-                      >
-                        Source
-                        <Github className="h-4 w-4" />
-                      </a>
-                    ) : null}
-                  </div>
-                </div>
-              </article>
+        <div className="services-grid">
+          {services.map((service, index) => (
+            <Reveal as="article" key={service.title} className="service-card" delay={(index % 3) * 70}>
+              <span className="service-number">{service.number}</span>
+              <div className="service-symbol" aria-hidden="true">
+                <span />
+                <span />
+              </div>
+              <h3>{service.title}</h3>
+              <p>{service.detail}</p>
             </Reveal>
+          ))}
+        </div>
+      </div>
+
+      <div className="stack-marquee" aria-label={`Technology stack: ${stack.join(", ")}`}>
+        <div className="stack-track">
+          {[...stack, ...stack].map((item, index) => (
+            <span key={`${item}-${index}`}>
+              {item}
+              <i aria-hidden="true">•</i>
+            </span>
           ))}
         </div>
       </div>
@@ -658,122 +547,89 @@ function ProjectsSection() {
 
 function ExperienceSection() {
   return (
-    <section id="experience" className="band band-light">
-      <div className="content-shell">
-        <Reveal>
-          <SectionIntro
-            eyebrow="Background"
-            title="Experience"
-            copy="The short version of my path so far: build real things, improve quickly, and stay honest about what I am still learning."
-          />
-        </Reveal>
+    <section id="experience" className="experience-section">
+      <div className="page-shell">
+        <SectionHeading number="04" title="Experience" />
 
-        <div className="experience-layout">
-          <div className="timeline-list">
-            {experience.map((item, index) => (
-              <Reveal key={item.title} delay={index * 100} className="timeline-reveal">
-                <article className="timeline-card">
-                  <span className="timeline-icon">
-                    <item.icon className="h-4 w-4" />
-                  </span>
-                  <div>
-                    <p className="timeline-period">{item.period}</p>
-                    <h3>{item.title}</h3>
-                    <p>{item.detail}</p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={220} className="competency-panel">
-            <p className="panel-eyebrow">Core competencies</p>
-            <div className="competency-list">
-              <span>React interfaces</span>
-              <span>API integration</span>
-              <span>Database-backed flows</span>
-              <span>Responsive UI</span>
-              <span>Deployment basics</span>
-              <span>Documentation reading</span>
-            </div>
-          </Reveal>
+        <div className="experience-grid">
+          {experience.map((item, index) => (
+            <Reveal as="article" key={item.title} className="experience-card" delay={index * 80}>
+              <span>{item.period}</span>
+              <h3>{item.title}</h3>
+              <p>{item.detail}</p>
+            </Reveal>
+          ))}
         </div>
+
+        <Reveal className="competency-wall">
+          <p>
+            React interfaces <i>•</i> API integration <i>•</i> database-backed flows <i>•</i>{" "}
+            responsive UI <i>•</i> practical debugging <i>•</i> documentation reading
+          </p>
+        </Reveal>
       </div>
     </section>
   )
 }
 
 function ContactSection() {
-  const handleCopyEmail = async () => {
+  const [copied, setCopied] = useState(false)
+
+  const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText("dumangcasvincentpaul@gmail.com")
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 1800)
     } catch {
-      window.prompt("Copy email:", "dumangcasvincentpaul@gmail.com")
+      window.location.href = "mailto:dumangcasvincentpaul@gmail.com"
     }
   }
 
   return (
-    <section id="contact" className="band band-contact">
-      <div className="content-shell">
-        <Reveal>
-          <SectionIntro
-            eyebrow="Let's talk"
-            title="Contact Me"
-            muted="Me"
-            copy="I am open to work, collaboration, and interesting projects. Drop me a message and I will respond promptly."
-            centered
-          />
+    <section id="contact" className="contact-section">
+      <div className="page-shell">
+        <Reveal className="contact-heading">
+          <span>/05 — Let&apos;s talk</span>
+          <h2>
+            Let&apos;s make
+            <br />
+            something useful.
+          </h2>
         </Reveal>
 
         <div className="contact-layout">
-          <Reveal delay={120}>
-            <div className="contact-methods-shell">
-              <div className="contact-list">
-                {contactItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target={item.href.startsWith("http") ? "_blank" : undefined}
-                    rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="contact-row"
-                  >
-                    <span className="contact-row-icon">
-                      <item.icon className="h-4 w-4" />
-                    </span>
-                    <span className="contact-row-copy">
-                      <span className="contact-row-label">{item.label}</span>
-                      <span className="contact-row-value">{item.value}</span>
-                    </span>
-                    <ArrowRight className="contact-row-arrow h-4 w-4" />
-                  </a>
-                ))}
-              </div>
-
-              <button type="button" className="contact-copy-button" onClick={handleCopyEmail}>
-                <Copy className="h-4 w-4" />
-                Copy email
-              </button>
+          <Reveal className="contact-intro">
+            <p>
+              I&apos;m open to internships, junior roles, collaborations, and focused contract
+              work. If you have a real problem to solve, I&apos;d like to hear about it.
+            </p>
+            <div className="location-line">
+              <MapPin aria-hidden="true" />
+              Cebu, Philippines · Open to remote
             </div>
           </Reveal>
 
-          <Reveal delay={220}>
-            <div className="contact-cta-shell">
-              <h3>Let&apos;s build something together.</h3>
-              <p>
-                Whether you have a project in mind, want to discuss opportunities, or just want to
-                connect, I&apos;d love to hear from you.
-              </p>
-              <div className="contact-cta-actions">
-                <Button asChild className="light-button contact-cta-button">
-                  <a href="mailto:dumangcasvincentpaul@gmail.com">Send me an email</a>
-                </Button>
-                <Button asChild variant="outline" className="contact-outline contact-cta-button">
-                  <a href="https://github.com/VincentPaul434" target="_blank" rel="noopener noreferrer">
-                    View GitHub
-                  </a>
-                </Button>
-              </div>
-            </div>
+          <Reveal className="contact-list" delay={100}>
+            {contactItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              >
+                <item.icon aria-hidden="true" />
+                <span>
+                  <small>{item.label}</small>
+                  {item.value}
+                </span>
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+            ))}
+
+            <button type="button" onClick={copyEmail}>
+              <Copy aria-hidden="true" />
+              {copied ? "Email copied" : "Copy email"}
+            </button>
           </Reveal>
         </div>
       </div>
@@ -784,15 +640,12 @@ function ContactSection() {
 function Footer() {
   return (
     <footer className="site-footer">
-      <div className="content-shell footer-inner">
+      <div className="page-shell footer-inner">
         <BrandMark />
-        <a
-          href="/r/Resume_Vincent_Paul_Dumangcas.docx"
-          download="Resume_Vincent_Paul_Dumangcas.docx"
-          className="footer-resume"
-        >
-          Download resume
-          <Download className="h-4 w-4" />
+        <p>Built with care in Cebu · © {new Date().getFullYear()} Vincent Paul Dumangcas</p>
+        <a href="#top" className="back-to-top">
+          Back to top
+          <ArrowUpRight aria-hidden="true" />
         </a>
       </div>
     </footer>
@@ -806,9 +659,9 @@ function App() {
       <Header />
       <main>
         <HeroSection />
+        <ProjectsSection />
         <AboutSection />
         <SkillsSection />
-        <ProjectsSection />
         <ExperienceSection />
         <ContactSection />
       </main>
