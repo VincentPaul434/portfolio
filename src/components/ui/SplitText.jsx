@@ -26,12 +26,13 @@ function useInViewOnce(delay) {
 
 export default function SplitText({
   text,
-  as: Tag = "p",
+  as: tagName = "p",
   className = "",
   splitBy = "words",
   delay = 0,
   stagger = 32,
 }) {
+  const Tag = tagName
   const [ref, visible] = useInViewOnce(delay)
   const parts =
     splitBy === "chars"

@@ -1,12 +1,27 @@
-# React + Vite
+# Vincent Paul Dumangcas - Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A desktop-style portfolio built with React and Vite.
 
-Currently, two official plugins are available:
+The interface recreates a compact operating-system workspace with draggable, resizable, and
+persistent windows; personalized project folders and text files; a nine-app dock; search; display
+settings; and a working command-line interface. Its content is based on Vincent's current projects,
+education, stack, and contact details.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Typography uses DM Sans for the interface, Newsreader for editorial headings, and Geist Mono for
+text editors and Terminal. The visual palette is Vincent's moss, cream, and acid green.
 
-## Expanding the ESLint configuration
+## Local development
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+## Verification
+
+```bash
+npm run lint
+npm run build
+```
+
+The project includes Vercel history fallbacks for app and project routes.
