@@ -2,13 +2,7 @@ import { createElement, useEffect, useRef, useState } from "react"
 import {
   ArrowDown,
   ArrowUpRight,
-  Copy,
-  Github,
-  Linkedin,
-  Mail,
-  MapPin,
   Menu,
-  Phone,
   X,
 } from "lucide-react"
 
@@ -114,33 +108,6 @@ const experience = [
     title: "Ready for the next real problem",
     detail:
       "Open to internships, junior roles, and contract work where I can contribute and keep learning quickly.",
-  },
-]
-
-const contactItems = [
-  {
-    href: "mailto:dumangcasvincentpaul@gmail.com",
-    label: "Email",
-    value: "dumangcasvincentpaul@gmail.com",
-    icon: Mail,
-  },
-  {
-    href: "tel:+639702909636",
-    label: "Phone",
-    value: "0970 290 9636",
-    icon: Phone,
-  },
-  {
-    href: "https://github.com/VincentPaul434",
-    label: "GitHub",
-    value: "@VincentPaul434",
-    icon: Github,
-  },
-  {
-    href: "https://www.linkedin.com/in/vincent-paul-dumangcas-74063a365/",
-    label: "LinkedIn",
-    value: "Vincent Paul Dumangcas",
-    icon: Linkedin,
   },
 ]
 
@@ -572,81 +539,45 @@ function ExperienceSection() {
   )
 }
 
-function ContactSection() {
-  const [copied, setCopied] = useState(false)
-
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText("dumangcasvincentpaul@gmail.com")
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1800)
-    } catch {
-      window.location.href = "mailto:dumangcasvincentpaul@gmail.com"
-    }
-  }
-
+function ContactFooter() {
   return (
-    <section id="contact" className="contact-section">
-      <div className="page-shell">
-        <Reveal className="contact-heading">
-          <span>/05 — Let&apos;s talk</span>
-          <h2>
-            Let&apos;s make
-            <br />
-            something useful.
-          </h2>
+    <footer id="contact" className="contact-footer">
+      <div className="page-shell contact-footer-inner">
+        <Reveal className="contact-footer-heading">
+          <p>
+            For internships, collaboration requests or project opportunities, don&apos;t hesitate
+            to reach out.
+          </p>
+          <h2>Get in touch</h2>
         </Reveal>
 
-        <div className="contact-layout">
-          <Reveal className="contact-intro">
-            <p>
-              I&apos;m open to internships, junior roles, collaborations, and focused contract
-              work. If you have a real problem to solve, I&apos;d like to hear about it.
-            </p>
-            <div className="location-line">
-              <MapPin aria-hidden="true" />
-              Cebu, Philippines · Open to remote
-            </div>
-          </Reveal>
+        <Reveal className="contact-direct" delay={80}>
+          <a href="mailto:dumangcasvincentpaul@gmail.com">
+            dumangcasvincentpaul@gmail.com
+          </a>
+          <a href="tel:+639702909636" className="contact-phone">
+            +63 970 290 9636
+          </a>
+        </Reveal>
 
-          <Reveal className="contact-list" delay={100}>
-            {contactItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              >
-                <item.icon aria-hidden="true" />
-                <span>
-                  <small>{item.label}</small>
-                  {item.value}
-                </span>
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-            ))}
+        <div className="contact-footer-space" aria-hidden="true" />
 
-            <button type="button" onClick={copyEmail}>
-              <Copy aria-hidden="true" />
-              {copied ? "Email copied" : "Copy email"}
-            </button>
-          </Reveal>
+        <div className="contact-footer-meta">
+          <p>©{new Date().getFullYear()} Vincent Paul Dumangcas</p>
+          <nav aria-label="Social links">
+            <a href="https://github.com/VincentPaul434" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/vincent-paul-dumangcas-74063a365/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+          </nav>
+          <p>Designed &amp; developed by Vincent</p>
         </div>
-      </div>
-    </section>
-  )
-}
-
-function Footer() {
-  return (
-    <footer className="site-footer">
-      <div className="page-shell footer-inner">
-        <BrandMark />
-        <p>Built with care in Cebu · © {new Date().getFullYear()} Vincent Paul Dumangcas</p>
-        <a href="#top" className="back-to-top">
-          Back to top
-          <ArrowUpRight aria-hidden="true" />
-        </a>
       </div>
     </footer>
   )
@@ -663,9 +594,8 @@ function App() {
         <AboutSection />
         <SkillsSection />
         <ExperienceSection />
-        <ContactSection />
       </main>
-      <Footer />
+      <ContactFooter />
     </div>
   )
 }
