@@ -25,3 +25,23 @@ npm run build
 ```
 
 The project includes Vercel history fallbacks for app and project routes.
+
+## Source structure
+
+```text
+src/
+├── components/
+│   ├── common/       # Reusable portfolio components
+│   └── ui/           # Small UI primitives
+├── config/           # Contact links and application constants
+├── hooks/            # Shared React hooks
+├── lib/              # Shared library helpers
+├── pages/
+│   └── Portfolio/    # Route-level portfolio workspace
+├── styles/           # Global application styles
+├── App.jsx           # Root application shell
+└── main.jsx          # Vite entry point
+```
+
+The portfolio intentionally has no `features`, authentication, store, services, or protected-route
+layers. Those folders should be introduced only when real functionality requires them.

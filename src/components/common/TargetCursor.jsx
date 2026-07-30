@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback, useMemo } from 'react';
+import { useEffect, useRef, useCallback, useMemo } from "react";
 import { gsap } from 'gsap';
 
 // A position: fixed element is positioned relative to the viewport UNLESS an
