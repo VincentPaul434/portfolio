@@ -351,3 +351,218 @@ section { scroll-margin-top: 6rem; }
   .footer-grid > div:first-child { grid-column: auto; }
   .footer-socials { grid-template-columns: repeat(2, max-content); }
 }
+
+/* Reference-style hover states: short, tactile transitions without scroll animations. */
+.sound-button,
+.header-talk,
+.menu-button,
+.menu-panel a,
+.arrow-link,
+.project-link,
+.footer-email,
+.footer-phone,
+.footer-socials a {
+  transition: background-color 280ms ease, border-color 280ms ease, color 280ms ease, opacity 280ms ease, transform 280ms ease;
+}
+
+.sound-button:hover {
+  background: rgba(217, 217, 217, 0.2);
+  border-color: rgba(255, 255, 255, 0.72);
+  transform: translateY(-1px);
+}
+
+.header-talk:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
+}
+
+.menu-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+.menu-panel a:hover {
+  color: var(--orange);
+  padding-left: 0.35rem;
+}
+
+.menu-panel a:hover small {
+  color: var(--orange);
+}
+
+.arrow-link {
+  transition-property: color, border-color, gap, opacity;
+}
+
+.arrow-link svg,
+.project-link svg {
+  transition: transform 280ms ease;
+}
+
+.arrow-link:hover {
+  gap: 1.2rem;
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.arrow-link-light:hover {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.arrow-link:hover svg,
+.project-link:hover svg {
+  transform: translate(0.2rem, -0.2rem);
+}
+
+.hero-heading em {
+  transition: color 280ms ease;
+}
+
+.hero-heading em:hover {
+  color: var(--orange);
+}
+
+.project-image-wrap {
+  transition: border-radius 420ms ease, transform 420ms ease, box-shadow 420ms ease;
+}
+
+.project-image-wrap img {
+  transition: transform 600ms cubic-bezier(0.2, 0.65, 0.25, 1), filter 420ms ease;
+}
+
+.project-image-caption {
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+
+.project-card-title h3,
+.project-card-title svg {
+  transition: color 280ms ease, transform 280ms ease;
+}
+
+.project-card:hover .project-image-wrap {
+  border-radius: 0.85rem;
+  transform: translateY(-0.35rem);
+  box-shadow: 0 1.25rem 2.5rem rgba(12, 12, 12, 0.12);
+}
+
+.project-card:hover .project-image-wrap img {
+  transform: scale(1.045);
+  filter: saturate(1) contrast(1.02);
+}
+
+.project-card:hover .project-image-caption {
+  opacity: 1;
+  transform: translateY(-0.15rem);
+}
+
+.project-card:hover .project-card-title h3 {
+  color: var(--orange);
+}
+
+.project-card:hover .project-card-title svg {
+  transform: translate(0.15rem, -0.15rem);
+}
+
+.project-link:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.service-row {
+  transition: background-color 280ms ease, padding 280ms ease, border-color 280ms ease;
+}
+
+.service-row h3,
+.service-row > svg,
+.service-number {
+  transition: color 280ms ease, transform 280ms ease;
+}
+
+.service-row:hover {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  background: rgba(12, 12, 12, 0.035);
+}
+
+.service-row:hover h3,
+.service-row:hover > svg,
+.service-row:hover .service-number {
+  color: var(--orange);
+}
+
+.service-row:hover > svg {
+  transform: rotate(45deg);
+}
+
+.testimonial-card {
+  transition: background-color 280ms ease, padding 280ms ease;
+}
+
+.testimonial-card:hover {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.listen-line {
+  transition: color 280ms ease, gap 280ms ease;
+}
+
+.testimonial-card:hover .listen-line {
+  gap: 0.7rem;
+  color: var(--white);
+}
+
+.testimonial-card:hover .listen-line svg {
+  transform: translateX(0.2rem);
+}
+
+.contact-copy .arrow-link:hover {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.footer-email:hover,
+.footer-phone:hover,
+.footer-socials a:hover {
+  color: var(--orange);
+  transform: translateY(-1px);
+}
+
+.footer-logo img {
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+
+.footer-logo:hover img {
+  opacity: 0.72;
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sound-button,
+  .header-talk,
+  .menu-button,
+  .menu-panel a,
+  .arrow-link,
+  .arrow-link svg,
+  .project-link,
+  .project-link svg,
+  .hero-heading em,
+  .project-image-wrap,
+  .project-image-wrap img,
+  .project-image-caption,
+  .project-card-title h3,
+  .project-card-title svg,
+  .service-row,
+  .service-row h3,
+  .service-row > svg,
+  .service-number,
+  .testimonial-card,
+  .listen-line,
+  .footer-email,
+  .footer-phone,
+  .footer-socials a,
+  .footer-logo img {
+    transition: none;
+  }
+}
