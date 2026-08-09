@@ -339,10 +339,10 @@ function Contact({ cookieVisible, setCookieVisible }) {
     <>
       <section id="contact" className="contact-section dark-section">
         <div className="shell">
-          <div className="contact-topline"><span>Start a collaboration</span><span>06 / 06</span></div>
+          <div className="contact-topline"><span>Let&apos;s build work that inspires.</span><span>PH / 19:44</span></div>
           <div className="contact-heading"><h2>Ready to build<br /><em>something bold?</em></h2><span className="contact-time">Cebu, PH · 2026</span></div>
           <div className="contact-grid">
-            <div className="contact-copy"><p>Have a project, an opportunity, or a problem worth thinking through? Send a note and let&apos;s make the next move clear.</p><ArrowLink href="mailto:dumangcasvincentpaul@gmail.com" light>Write an email</ArrowLink></div>
+            <div className="contact-copy"><p>Have a project, an opportunity, or a problem worth thinking through? Send a note and let&apos;s make the next move clear.</p><ArrowLink href="mailto:dumangcasvincentpaul@gmail.com" light>Start a collaboration</ArrowLink></div>
             <form className="contact-form" onSubmit={handleSubmit}>
               <label htmlFor="name">Your name</label><input id="name" name="name" type="text" placeholder="Name" required />
               <label htmlFor="email">Email address</label><input id="email" name="email" type="email" placeholder="you@email.com" required />
