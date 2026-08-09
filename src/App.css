@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Familjen Grotesk";
-  src: url("/fonts/trionn/3320e8f61c1911cd.woff2") format("woff2");
+  src: url("/fonts/round8-four-webfont.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Martian Mono";
-  src: url("/fonts/trionn/0ba63d0a029579fe.woff2") format("woff2");
+  src: url("/fonts/round8-four-webfont.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Editorial";
-  src: url("/fonts/trionn/62cb8f0a30265345.woff2") format("woff2");
+  src: url("/fonts/Humane-SemiBold.woff2") format("woff2");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: "Neue Haas";
-  src: url("/fonts/trionn/e3a6ba447ca55e1c.woff2") format("woff2");
+  src: url("/fonts/Humane-SemiBold.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -68,7 +68,9 @@ section { scroll-margin-top: 6rem; }
 
 .site-header { position: fixed; top: 0; left: 0; z-index: 50; width: 100%; padding: 1.5rem 2.4rem; display: flex; align-items: center; justify-content: space-between; pointer-events: none; mix-blend-mode: normal; }
 .site-logo, .header-actions { pointer-events: auto; }
-.site-logo img { width: 7.25rem; height: auto; filter: brightness(0) invert(1); }
+.site-logo { display: inline-flex; align-items: center; gap: 0.65rem; }
+.site-monogram { width: 2.15rem; height: 2.15rem; display: grid; place-items: center; border: 1px solid rgba(255,255,255,0.55); border-radius: 50%; font-family: "Martian Mono", monospace; font-size: 0.58rem; letter-spacing: -0.08em; }
+.site-name { font-family: "Martian Mono", monospace; font-size: 0.62rem; letter-spacing: 0.05em; text-transform: uppercase; }
 .header-actions { display: flex; align-items: center; gap: 0.5rem; }
 .sound-button, .header-talk, .menu-button { height: 2.25rem; display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.35); border-radius: 999px; color: var(--white); background: rgba(12,12,12,0.52); font-family: "Martian Mono", monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.02em; }
 .sound-button { width: 2.25rem; background: rgba(255,255,255,0.12); }
@@ -165,6 +167,18 @@ section { scroll-margin-top: 6rem; }
 .project-card { min-width: 0; }
 .project-image-wrap { position: relative; aspect-ratio: 1.36; overflow: hidden; background: #ccc; }
 .project-image-wrap img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.82); }
+.project-visual { display: flex; align-items: end; padding: 1.5rem; }
+.project-visual-poultry { background: linear-gradient(135deg, #edc98f 0%, #df744a 45%, #5d2d22 100%); color: #fff8e8; }
+.project-visual-nurse { background: linear-gradient(135deg, #10251f 0%, #87b7a5 55%, #dae4dc 100%); color: #f4fff9; }
+.project-visual-label { position: relative; z-index: 1; display: flex; flex-direction: column; font-family: "Neue Haas", sans-serif; font-size: clamp(3.2rem, 7vw, 7rem); letter-spacing: -0.1em; line-height: 0.76; }
+.project-visual-poultry .project-visual-label { color: #fff8e8; }
+.project-visual-nurse .project-visual-label { color: #0e2b24; }
+.abstract-window { position: absolute; top: 14%; right: 8%; width: 45%; height: 59%; border: 1px solid rgba(255,255,255,0.46); border-radius: 0.75rem; background: rgba(255,255,255,0.12); }
+.abstract-window::before { position: absolute; inset: 0 0 auto; height: 1.6rem; border-bottom: 1px solid rgba(255,255,255,0.3); content: ""; }
+.abstract-window span { position: absolute; top: 0.6rem; width: 0.4rem; height: 0.4rem; border-radius: 50%; background: currentColor; opacity: 0.7; }
+.abstract-window span:nth-child(1) { left: 0.7rem; }.abstract-window span:nth-child(2) { left: 1.4rem; }.abstract-window span:nth-child(3) { left: 2.1rem; }
+.abstract-window i { position: absolute; right: 8%; left: 8%; height: 8%; border-radius: 999px; background: currentColor; opacity: 0.22; }
+.abstract-window i:nth-of-type(1) { top: 34%; }.abstract-window i:nth-of-type(2) { top: 51%; right: 30%; }.abstract-window i:nth-of-type(3) { top: 68%; left: 42%; }
 .project-number, .project-image-caption { position: absolute; top: 1rem; z-index: 1; font-family: "Martian Mono", monospace; font-size: 0.55rem; text-transform: uppercase; }
 .project-number { left: 1rem; }
 .project-image-caption { right: 1rem; }
@@ -235,7 +249,7 @@ section { scroll-margin-top: 6rem; }
 
 .site-footer { padding: 1rem 0 1.3rem; border-top: 1px solid var(--line); }
 .footer-grid { padding: 4rem 0 7rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
-.footer-logo img { width: 7.4rem; filter: brightness(0) invert(1); }
+.footer-logo { display: inline-flex; align-items: center; gap: 0.65rem; }
 .footer-grid p { margin-top: 4rem; color: #777; font-family: "Martian Mono", monospace; font-size: 0.55rem; text-transform: uppercase; }
 .footer-email, .footer-phone { display: block; width: max-content; max-width: 100%; margin-top: 1.2rem; font-family: "Neue Haas", sans-serif; font-size: 1.4rem; letter-spacing: -0.06em; overflow-wrap: anywhere; }
 .footer-phone { margin-top: 0.5rem; color: #777; font-family: "Martian Mono", monospace; font-size: 0.65rem; letter-spacing: 0; }
