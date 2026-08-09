@@ -317,11 +317,6 @@ function ProjectCard({ project, index }) {
         </div>
         {project.link ? <span className="text-link">View project <ArrowUpRight aria-hidden="true" /></span> : <span className="project-status">Private build</span>}
       </div>
-      {project.secondaryLink ? (
-        <a className="secondary-project-link" href={project.secondaryLink} target="_blank" rel="noopener noreferrer">
-          Backend source <ArrowUpRight aria-hidden="true" />
-        </a>
-      ) : null}
     </>
   )
 
@@ -332,6 +327,11 @@ function ProjectCard({ project, index }) {
           {content}
         </a>
       ) : content}
+      {project.secondaryLink ? (
+        <a className="secondary-project-link" href={project.secondaryLink} target="_blank" rel="noopener noreferrer">
+          Backend source <ArrowUpRight aria-hidden="true" />
+        </a>
+      ) : null}
     </Reveal>
   )
 }
