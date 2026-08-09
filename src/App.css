@@ -391,6 +391,51 @@ section { scroll-margin-top: 6rem; }
   color: var(--orange);
 }
 
+.button-label {
+  position: relative;
+  display: inline-flex;
+  height: 1.08em;
+  overflow: hidden;
+  vertical-align: middle;
+  line-height: 1.08;
+}
+
+.button-label-line {
+  display: block;
+  white-space: nowrap;
+  transition: transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.button-label-line-hover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.arrow-link:hover .button-label-line:first-child,
+.header-talk:hover .button-label-line:first-child,
+.menu-button:hover .button-label-line:first-child,
+.project-link:hover .button-label-line:first-child,
+.contact-form button:hover .button-label-line:first-child {
+  transform: translateY(-100%);
+}
+
+.arrow-link:hover .button-label-line-hover,
+.header-talk:hover .button-label-line-hover,
+.menu-button:hover .button-label-line-hover,
+.project-link:hover .button-label-line-hover,
+.contact-form button:hover .button-label-line-hover {
+  transform: translateY(-100%);
+}
+
+.header-talk:hover {
+  box-shadow: 0 0 0 0.22rem rgba(255, 255, 255, 0.08);
+}
+
+.menu-button:hover {
+  gap: 0.65rem;
+}
+
 .arrow-link {
   transition-property: color, border-color, gap, opacity;
 }
@@ -468,6 +513,40 @@ section { scroll-margin-top: 6rem; }
 .project-link:hover {
   color: var(--orange);
   border-color: var(--orange);
+  gap: 0.7rem;
+}
+
+.project-link {
+  transition-property: color, border-color, gap, opacity;
+}
+
+.contact-form button {
+  transition: color 280ms ease, border-color 280ms ease, gap 280ms ease;
+}
+
+.contact-form button:hover {
+  gap: 1rem;
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.cookie-bar button {
+  transition: color 220ms ease, opacity 220ms ease;
+}
+
+.cookie-bar button:hover {
+  color: var(--orange);
+  opacity: 0.85;
+}
+
+.arrow-link:focus-visible,
+.header-talk:focus-visible,
+.menu-button:focus-visible,
+.project-link:focus-visible,
+.contact-form button:focus-visible,
+.cookie-bar button:focus-visible {
+  outline: 1px solid var(--orange);
+  outline-offset: 0.35rem;
 }
 
 .service-row {
@@ -562,7 +641,8 @@ section { scroll-margin-top: 6rem; }
   .footer-email,
   .footer-phone,
   .footer-socials a,
-  .footer-logo img {
+  .footer-logo img,
+  .button-label-line {
     transition: none;
   }
 }

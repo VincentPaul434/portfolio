@@ -86,9 +86,18 @@ const testimonials = [
 function ArrowLink({ children, href = "#contact", light = false }) {
   return (
     <a className={`arrow-link${light ? " arrow-link-light" : ""}`} href={href}>
-      <span>{children}</span>
+      <HoverLabel>{children}</HoverLabel>
       <ArrowRight aria-hidden="true" />
     </a>
+  )
+}
+
+function HoverLabel({ children }) {
+  return (
+    <span className="button-label">
+      <span className="button-label-line">{children}</span>
+      <span className="button-label-line button-label-line-hover" aria-hidden="true">{children}</span>
+    </span>
   )
 }
 
@@ -103,9 +112,9 @@ function SiteHeader({ menuOpen, setMenuOpen, soundOn, setSoundOn }) {
           <button className="sound-button" type="button" onClick={() => setSoundOn((value) => !value)} aria-label={soundOn ? "Mute sound" : "Enable sound"}>
             {soundOn ? <Volume2 aria-hidden="true" /> : <VolumeX aria-hidden="true" />}
           </button>
-          <a className="header-talk" href="#contact">Let&apos;s talk</a>
+          <a className="header-talk" href="#contact"><HoverLabel>Let&apos;s talk</HoverLabel></a>
           <button className="menu-button" type="button" onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-controls="main-navigation">
-            <span>Menu</span>
+            <HoverLabel>Menu</HoverLabel>
             {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
         </div>
@@ -252,7 +261,7 @@ function ProjectCard({ project }) {
       <div className="project-card-meta"><span>{project.category}</span><span>{project.number}</span></div>
       <div className="project-card-title"><h3>{project.title}</h3><ArrowUpRight aria-hidden="true" /></div>
       <p>{project.description}</p>
-      <a className="project-link" href="#contact">Explore project <ArrowRight aria-hidden="true" /></a>
+      <a className="project-link" href="#contact"><HoverLabel>Explore project</HoverLabel><ArrowRight aria-hidden="true" /></a>
     </article>
   )
 }
@@ -347,7 +356,7 @@ function Contact({ cookieVisible, setCookieVisible }) {
               <label htmlFor="name">Your name</label><input id="name" name="name" type="text" placeholder="Name" required />
               <label htmlFor="email">Email address</label><input id="email" name="email" type="email" placeholder="you@email.com" required />
               <label htmlFor="message">Tell me about the project</label><textarea id="message" name="message" rows="4" placeholder="A few words about what you are building..." required />
-              <button type="submit">{sent ? "Opening email" : "Start a conversation"}<ArrowUpRight aria-hidden="true" /></button>
+              <button type="submit"><HoverLabel>{sent ? "Opening email" : "Start a conversation"}</HoverLabel><ArrowUpRight aria-hidden="true" /></button>
             </form>
           </div>
           {cookieVisible ? <div className="cookie-bar"><span>We use cookies to enhance your experience.</span><div><button type="button" onClick={() => setCookieVisible(false)}>Decline</button><button type="button" onClick={() => setCookieVisible(false)}>Accept</button></div></div> : null}
