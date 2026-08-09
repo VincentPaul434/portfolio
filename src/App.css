@@ -542,6 +542,11 @@ section {
   grid-column: 1 / -1;
 }
 
+.project-card.is-featured {
+  grid-column: 1 / -1;
+  order: -1;
+}
+
 .project-card > a:first-child {
   display: block;
 }
@@ -565,14 +570,43 @@ section {
   text-transform: uppercase;
 }
 
+.project-meta-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.project-featured {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.4rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.12rem 0.55rem;
+  color: var(--accent);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .project-card h3 {
   margin-top: 0.15rem;
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 4.5vw, 4rem);
-  font-weight: 600;
-  line-height: 0.86;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
+  max-width: 16ch;
+  font-family: var(--font-body);
+  font-size: clamp(2.2rem, 3.5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+}
+
+.project-card.is-featured h3 {
+  font-size: clamp(2.8rem, 5vw, 5.2rem);
+}
+
+.project-card.is-featured .project-visual {
+  aspect-ratio: 16 / 8;
 }
 
 .project-year {
@@ -956,12 +990,12 @@ section {
 
 .service-card h3 {
   margin-top: auto;
-  max-width: 8ch;
-  font-family: var(--font-display);
-  font-size: clamp(2.9rem, 4vw, 4rem);
-  font-weight: 700;
-  line-height: 0.78;
-  text-transform: uppercase;
+  max-width: 11ch;
+  font-family: var(--font-body);
+  font-size: clamp(2.25rem, 3.4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
 }
 
 .service-card p {
@@ -1047,12 +1081,13 @@ section {
 }
 
 .experience-card h3 {
+  max-width: 12ch;
   margin-top: auto;
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 4.5vw, 4.4rem);
-  font-weight: 700;
-  line-height: 0.78;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: clamp(2.35rem, 3.7vw, 3.8rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
 }
 
 .experience-card p {
@@ -1258,7 +1293,16 @@ section {
     grid-column: auto;
   }
 
+  .project-card.is-featured {
+    grid-column: auto;
+    order: initial;
+  }
+
   .project-card.is-wide .project-visual {
+    aspect-ratio: 8 / 5;
+  }
+
+  .project-card.is-featured .project-visual {
     aspect-ratio: 8 / 5;
   }
 
@@ -1433,7 +1477,11 @@ section {
   }
 
   .project-card h3 {
-    font-size: 2.75rem;
+    font-size: 2.35rem;
+  }
+
+  .project-card.is-featured h3 {
+    font-size: 2.8rem;
   }
 
   .project-visual,
@@ -1500,7 +1548,7 @@ section {
   }
 
   .service-card h3 {
-    font-size: 3.2rem;
+    font-size: 2.8rem;
   }
 
   .stack-track span {
@@ -1512,7 +1560,7 @@ section {
   }
 
   .experience-card h3 {
-    font-size: 3.35rem;
+    font-size: 2.9rem;
   }
 
   .competency-wall p {

@@ -8,10 +8,8 @@ import {
 
 const navItems = [
   { label: "Home", href: "#top" },
-  { label: "Projects", href: "#projects" },
+  { label: "Work", href: "#projects" },
   { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ]
 
@@ -40,6 +38,7 @@ const projects = [
     tags: ["React", "Dashboard", "Responsive UI"],
     image: "/projects/etc-cars.png",
     visual: "cars",
+    featured: true,
   },
   {
     id: "03",
@@ -358,7 +357,10 @@ function ProjectCard({ project, index }) {
     <>
       <div className="project-card-heading">
         <div>
-          <span className="project-type">{project.type}</span>
+          <div className="project-meta-line">
+            <span className="project-type">{project.type}</span>
+            {project.featured ? <span className="project-featured">Featured project</span> : null}
+          </div>
           <h3>{project.title}</h3>
         </div>
         <span className="project-year">{project.period}</span>
@@ -389,7 +391,7 @@ function ProjectCard({ project, index }) {
     <Reveal
       as="article"
       delay={(index % 2) * 80}
-      className={`project-card ${index === projects.length - 1 ? "is-wide" : ""}`}
+      className={`project-card ${project.featured ? "is-featured" : ""} ${index === projects.length - 1 ? "is-wide" : ""}`}
     >
       {project.link ? (
         <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title}`}>
