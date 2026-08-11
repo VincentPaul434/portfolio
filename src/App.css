@@ -15,9 +15,33 @@
 }
 
 @font-face {
-  font-family: "Neue Haas";
-  src: url("/fonts/trionn/e3a6ba447ca55e1c.woff2") format("woff2");
+  font-family: "Mori";
+  src: url("/fonts/mori/Mori-Extralight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mori";
+  src: url("/fonts/mori/Mori-Regular.otf") format("opentype");
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mori";
+  src: url("/fonts/mori/Mori-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mori";
+  src: url("/fonts/mori/Mori-Black.otf") format("opentype");
+  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
@@ -94,7 +118,7 @@ section { scroll-margin-top: 6rem; }
 .eyebrow { align-self: flex-start; color: rgba(255,255,255,0.54); }
 .eyebrow i { color: #ff571c; font-style: normal; padding: 0 0.4rem; }
 .hero-heading-wrap { margin-top: 3rem; display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(15rem, 0.3fr); align-items: end; gap: 2rem; }
-.hero-heading { max-width: 8.5ch; font-family: "Neue Haas", "Familjen Grotesk", sans-serif; font-size: clamp(5.2rem, 12vw, 10.6rem); font-weight: 400; letter-spacing: -0.1em; line-height: 0.78; }
+.hero-heading { max-width: 8.5ch; font-family: "Mori", "Familjen Grotesk", sans-serif; font-size: clamp(5.2rem, 12vw, 10.6rem); font-weight: 400; letter-spacing: -0.1em; line-height: 0.78; }
 .hero-heading span { display: block; }
 .hero-heading span:nth-child(2) { color: #bdbdbd; }
 .hero-heading em, .section-heading-row em, .contact-heading em { color: #f2f2f0; font-family: "Editorial", Georgia, serif; font-weight: 200; letter-spacing: -0.07em; }
@@ -142,7 +166,7 @@ section { scroll-margin-top: 6rem; }
 .facts-section { padding: 7rem 0 6rem; }
 .section-heading-row { display: flex; align-items: end; justify-content: space-between; gap: 3rem; }
 .section-kicker { display: block; margin-bottom: 1.8rem; color: #6e6e6e; }
-.section-heading-row h2, .contact-heading h2 { font-family: "Neue Haas", sans-serif; font-size: clamp(3.3rem, 7.5vw, 7.7rem); font-weight: 400; letter-spacing: -0.105em; line-height: 0.82; }
+.section-heading-row h2, .contact-heading h2 { font-family: "Mori", sans-serif; font-size: clamp(3.3rem, 7.5vw, 7.7rem); font-weight: 400; letter-spacing: -0.105em; line-height: 0.82; }
 .section-heading-row em { color: var(--ink); }
 .section-index { align-self: start; color: #888; }
 .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 6rem; border-top: 1px solid var(--light-line); border-bottom: 1px solid var(--light-line); }
@@ -150,7 +174,7 @@ section { scroll-margin-top: 6rem; }
 .fact-card + .fact-card { padding-left: 1.5rem; }
 .fact-card:last-child { border-right: 0; }
 .fact-label { display: block; margin-bottom: 2rem; color: #6e6e6e; }
-.fact-card strong { display: block; font-family: "Neue Haas", sans-serif; font-size: clamp(5rem, 9vw, 9rem); font-weight: 400; letter-spacing: -0.12em; line-height: 0.7; }
+.fact-card strong { display: block; font-family: "Mori", sans-serif; font-size: clamp(5rem, 9vw, 9rem); font-weight: 400; letter-spacing: -0.12em; line-height: 0.7; }
 .fact-card p { max-width: 11rem; margin-top: 1.1rem; color: #686868; font-size: 0.8rem; line-height: 1.2; }
 .recognition-grid { margin-top: 5rem; padding-top: 1.4rem; display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 2rem; border-top: 1px solid var(--light-line); }
 .mini-label { display: block; margin-bottom: 1rem; color: #6c6c6c; }
@@ -175,14 +199,14 @@ section { scroll-margin-top: 6rem; }
 .project-card:nth-child(4) .project-image-wrap img { filter: saturate(0.65) brightness(1.05); }
 .project-card-meta { display: flex; justify-content: space-between; margin-top: 1.1rem; color: #767676; }
 .project-card-title { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 0.45rem; }
-.project-card-title h3 { font-family: "Neue Haas", sans-serif; font-size: clamp(2rem, 3.6vw, 3.3rem); font-weight: 400; letter-spacing: -0.08em; line-height: 0.9; }
+.project-card-title h3 { font-family: "Mori", sans-serif; font-size: clamp(2rem, 3.6vw, 3.3rem); font-weight: 400; letter-spacing: -0.08em; line-height: 0.9; }
 .project-card-title svg { width: 1.15rem; height: 1.15rem; }
 .project-card > p { max-width: 20rem; margin-top: 0.9rem; color: #666; font-size: 0.93rem; line-height: 1.15; letter-spacing: -0.025em; }
 .project-link { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 1.2rem; border-bottom: 1px solid currentColor; padding-bottom: 0.35rem; font-family: "Martian Mono Variable", monospace; font-size: 0.58rem; text-transform: uppercase; }
 .project-link svg { width: 0.75rem; height: 0.75rem; }
 .project-endcap { margin-top: 7rem; padding: 3.5rem 0 0; display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: start; border-top: 1px solid var(--light-line); }
 .project-endcap > span { font-size: 1.2rem; }
-.project-endcap p { max-width: 20rem; font-family: "Neue Haas", sans-serif; font-size: 2.1rem; letter-spacing: -0.07em; line-height: 0.95; }
+.project-endcap p { max-width: 20rem; font-family: "Mori", sans-serif; font-size: 2.1rem; letter-spacing: -0.07em; line-height: 0.95; }
 .project-endcap .arrow-link { justify-self: end; }
 
 .services-section { padding: 8rem 0 6rem; }
@@ -192,11 +216,11 @@ section { scroll-margin-top: 6rem; }
 .service-list { margin-top: 6rem; border-top: 1px solid var(--line); }
 .service-row { min-height: 8.3rem; padding: 1.8rem 0; display: grid; grid-template-columns: 3rem minmax(12rem, 0.85fr) 1fr 2rem; align-items: center; gap: 2rem; border-bottom: 1px solid var(--line); }
 .service-number { color: #8c8c8c; }
-.service-row h3 { font-family: "Neue Haas", sans-serif; font-size: clamp(1.7rem, 3vw, 3rem); font-weight: 400; letter-spacing: -0.08em; line-height: 0.9; }
+.service-row h3 { font-family: "Mori", sans-serif; font-size: clamp(1.7rem, 3vw, 3rem); font-weight: 400; letter-spacing: -0.08em; line-height: 0.9; }
 .service-row p { max-width: 20rem; color: #8b8b8b; font-size: 0.9rem; line-height: 1.15; }
 .service-row > svg { width: 1rem; height: 1rem; justify-self: end; }
 .services-endnote { margin-top: 4rem; display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: start; }
-.services-endnote p { font-family: "Neue Haas", sans-serif; font-size: 2rem; letter-spacing: -0.07em; line-height: 0.9; }
+.services-endnote p { font-family: "Mori", sans-serif; font-size: 2rem; letter-spacing: -0.07em; line-height: 0.9; }
 .services-endnote .arrow-link { justify-self: end; }
 
 .testimonials-section { padding: 8rem 0 7rem; background: linear-gradient(180deg, #e1e1df 0%, #f8f8f6 100%); }
@@ -206,7 +230,7 @@ section { scroll-margin-top: 6rem; }
 .testimonial-card:last-child { border-right: 0; }
 .testimonial-tag { color: #6f6f6f; }
 .quote-mark { margin-top: 3rem; color: #999; font-family: "Editorial", Georgia, serif; font-size: 3rem; line-height: 0.5; }
-.testimonial-card > p { max-width: 18rem; margin-top: 0.5rem; font-family: "Neue Haas", sans-serif; font-size: 1.55rem; letter-spacing: -0.06em; line-height: 0.95; }
+.testimonial-card > p { max-width: 18rem; margin-top: 0.5rem; font-family: "Mori", sans-serif; font-size: 1.55rem; letter-spacing: -0.06em; line-height: 0.95; }
 .testimonial-card footer { margin-top: auto; display: flex; flex-direction: column; gap: 0.3rem; padding-top: 2rem; font-size: 0.77rem; }
 .testimonial-card footer span { color: #777; }
 .listen-line { margin-top: 1.2rem; display: flex; align-items: center; gap: 0.45rem; color: #777; font-family: "Martian Mono Variable", monospace; font-size: 0.58rem; text-transform: uppercase; }
@@ -238,7 +262,7 @@ section { scroll-margin-top: 6rem; }
 .footer-grid { padding: 4rem 0 7rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
 .footer-logo img { width: 7.4rem; filter: brightness(0) invert(1); }
 .footer-grid p { margin-top: 4rem; color: #777; font-family: "Martian Mono Variable", monospace; font-size: 0.55rem; text-transform: uppercase; }
-.footer-email, .footer-phone { display: block; width: max-content; max-width: 100%; margin-top: 1.2rem; font-family: "Neue Haas", sans-serif; font-size: 1.4rem; letter-spacing: -0.06em; overflow-wrap: anywhere; }
+.footer-email, .footer-phone { display: block; width: max-content; max-width: 100%; margin-top: 1.2rem; font-family: "Mori", sans-serif; font-size: 1.4rem; letter-spacing: -0.06em; overflow-wrap: anywhere; }
 .footer-phone { margin-top: 0.5rem; color: #777; font-family: "Martian Mono Variable", monospace; font-size: 0.65rem; letter-spacing: 0; }
 .footer-socials { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.2rem; }
 .footer-socials a { border: 1px solid var(--line); border-radius: 999px; padding: 0.6rem 0.8rem; font-family: "Martian Mono Variable", monospace; font-size: 0.55rem; text-transform: uppercase; }
@@ -270,7 +294,7 @@ section { scroll-margin-top: 6rem; }
 .footer-email { margin-top: 1.1rem; font-size: 1.05rem; }
 .footer-phone { font-size: 0.62rem; }
 .footer-socials { display: grid; grid-template-columns: repeat(2, max-content); gap: 0.5rem 1.5rem; }
-.footer-socials a { border: 0; padding: 0; font-family: "Neue Haas", sans-serif; font-size: 1rem; letter-spacing: -0.04em; text-transform: none; }
+.footer-socials a { border: 0; padding: 0; font-family: "Mori", sans-serif; font-size: 1rem; letter-spacing: -0.04em; text-transform: none; }
 .footer-bottom { display: none; }
 
 @media (max-width: 820px) {
