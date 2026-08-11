@@ -7,14 +7,6 @@
 }
 
 @font-face {
-  font-family: "Martian Mono";
-  src: url("/fonts/trionn/0ba63d0a029579fe.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Editorial";
   src: url("/fonts/trionn/62cb8f0a30265345.woff2") format("woff2");
   font-weight: 200;
@@ -70,17 +62,17 @@ section { scroll-margin-top: 6rem; }
 .site-logo, .header-actions { pointer-events: auto; }
 .site-logo img { width: 7.25rem; height: auto; filter: brightness(0) invert(1); }
 .header-actions { display: flex; align-items: center; gap: 0.5rem; }
-.sound-button, .header-talk, .menu-button { height: 2.25rem; display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.35); border-radius: 999px; color: var(--white); background: rgba(12,12,12,0.52); font-family: "Martian Mono", monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.02em; }
+.sound-button, .header-talk, .menu-button { height: 2.25rem; display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.35); border-radius: 999px; color: var(--white); background: rgba(12,12,12,0.52); font-family: "Martian Mono Variable", monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.02em; }
 .sound-button { width: 2.25rem; background: rgba(255,255,255,0.12); }
 .sound-button svg { width: 0.8rem; height: 0.8rem; }
 .header-talk { padding: 0 1rem; background: var(--white); border-color: var(--white); color: var(--black); font-weight: 600; }
 .menu-button { gap: 0.45rem; padding: 0 0.7rem 0 0.9rem; }
 .menu-button svg { width: 0.8rem; height: 0.8rem; }
 .menu-panel { position: fixed; top: 4.7rem; right: 2.4rem; z-index: 48; width: min(20rem, calc(100% - 2rem)); padding: 1rem 1.2rem 1.3rem; background: var(--white); color: var(--ink); border: 1px solid rgba(12,12,12,0.2); border-radius: 1rem; box-shadow: 0 1rem 3rem rgba(0,0,0,0.18); }
-.menu-panel-label, .mini-label, .section-kicker, .eyebrow, .section-index, .service-number, .project-card-meta, .fact-label, .testimonial-tag, .contact-topline, .about-topline, .footer-bottom { font-family: "Martian Mono", monospace; font-size: 0.57rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.menu-panel-label, .mini-label, .section-kicker, .eyebrow, .section-index, .service-number, .project-card-meta, .fact-label, .testimonial-tag, .contact-topline, .about-topline, .footer-bottom { font-family: "Martian Mono Variable", monospace; font-size: 0.57rem; letter-spacing: 0.05em; text-transform: uppercase; }
 .menu-panel-label { display: block; color: var(--gray); padding-bottom: 0.75rem; }
 .menu-panel a { display: flex; align-items: center; gap: 0.65rem; padding: 0.8rem 0; border-top: 1px solid var(--light-line); font-size: 1.5rem; letter-spacing: -0.06em; }
-.menu-panel a small { min-width: 1.2rem; color: var(--gray); font-family: "Martian Mono", monospace; font-size: 0.55rem; letter-spacing: 0; }
+.menu-panel a small { min-width: 1.2rem; color: var(--gray); font-family: "Martian Mono Variable", monospace; font-size: 0.55rem; letter-spacing: 0; }
 .menu-panel a svg { width: 0.9rem; height: 0.9rem; margin-left: auto; }
 
 .hero-section { position: relative; min-height: 100svh; overflow: hidden; background: #090909; }
@@ -107,7 +99,7 @@ section { scroll-margin-top: 6rem; }
 .hero-heading span:nth-child(2) { color: #bdbdbd; }
 .hero-heading em, .section-heading-row em, .contact-heading em { color: #f2f2f0; font-family: "Editorial", Georgia, serif; font-weight: 200; letter-spacing: -0.07em; }
 .hero-heading em { font-size: 0.88em; }
-.arrow-link { width: max-content; display: inline-flex; align-items: center; gap: 0.9rem; border-bottom: 1px solid currentColor; padding: 0.55rem 0; font-family: "Martian Mono", monospace; font-size: 0.62rem; letter-spacing: 0.03em; text-transform: uppercase; }
+.arrow-link { width: max-content; display: inline-flex; align-items: center; gap: 0.9rem; border-bottom: 1px solid currentColor; padding: 0.55rem 0; font-family: "Martian Mono Variable", monospace; font-size: 0.62rem; letter-spacing: 0.03em; text-transform: uppercase; }
 .arrow-link svg { width: 0.85rem; height: 0.85rem; }
 .arrow-link-light { color: var(--white); }
 .hero-bottom { display: grid; grid-template-columns: 1fr 18rem; align-items: end; justify-content: space-between; gap: 2rem; }
@@ -115,9 +107,9 @@ section { scroll-margin-top: 6rem; }
 .metric-icon { width: 2.8rem; height: 2.8rem; display: grid; place-items: center; border-right: 1px solid rgba(255,255,255,0.24); padding-right: 1rem; font-size: 2rem; font-weight: 200; }
 .hero-metric b, .hero-metric small { display: block; }
 .hero-metric b { font-size: 0.7rem; font-weight: 500; }
-.hero-metric small { margin-top: 0.3rem; color: rgba(255,255,255,0.56); font-family: "Martian Mono", monospace; font-size: 0.52rem; line-height: 1.45; text-transform: uppercase; }
+.hero-metric small { margin-top: 0.3rem; color: rgba(255,255,255,0.56); font-family: "Martian Mono Variable", monospace; font-size: 0.52rem; line-height: 1.45; text-transform: uppercase; }
 .hero-blurb { max-width: 17rem; font-size: 1rem; line-height: 1.05; letter-spacing: -0.045em; color: rgba(255,255,255,0.85); }
-.hero-footnote { position: absolute; bottom: 2rem; left: 50%; display: flex; flex-direction: column; gap: 0.05rem; transform: translateX(-50%); color: rgba(255,255,255,0.85); font-family: "Martian Mono", monospace; font-size: 0.55rem; text-align: center; text-transform: uppercase; }
+.hero-footnote { position: absolute; bottom: 2rem; left: 50%; display: flex; flex-direction: column; gap: 0.05rem; transform: translateX(-50%); color: rgba(255,255,255,0.85); font-family: "Martian Mono Variable", monospace; font-size: 0.55rem; text-align: center; text-transform: uppercase; }
 .hero-footnote b { color: #ff571c; }
 
 .about-section { position: relative; min-height: 100svh; padding: 8.5rem 0 7rem; overflow: hidden; }
@@ -133,7 +125,7 @@ section { scroll-margin-top: 6rem; }
 .vision-rule { height: 1px; width: 100%; background: var(--line); }
 .vision-statement { display: flex; align-items: end; justify-content: space-between; gap: 2rem; }
 .vision-statement p { max-width: 12ch; font-family: "Neue Haas", sans-serif; font-size: clamp(3rem, 7vw, 7rem); letter-spacing: -0.1em; line-height: 0.8; }
-.vision-statement span { align-self: center; font-family: "Martian Mono", monospace; font-size: 0.62rem; text-transform: uppercase; }
+.vision-statement span { align-self: center; font-family: "Martian Mono Variable", monospace; font-size: 0.62rem; text-transform: uppercase; }
 .vision-marquee { display: flex; flex-direction: column; gap: 0; width: max-content; color: var(--white); font-family: "Neue Haas", sans-serif; font-size: clamp(5rem, 15vw, 15rem); letter-spacing: -0.12em; line-height: 0.74; white-space: nowrap; transform: translateX(-4%); }
 .vision-marquee span:nth-child(2) { color: rgba(255,255,255,0.25); transform: translateX(19%); }
 .vision-marquee i { color: #ff571c; font-size: 0.5em; font-style: normal; letter-spacing: 0; }
@@ -155,7 +147,7 @@ section { scroll-margin-top: 6rem; }
 .mini-label { display: block; margin-bottom: 1rem; color: #6c6c6c; }
 .recognition-grid p { max-width: 16rem; color: #666; font-size: 0.9rem; line-height: 1.15; letter-spacing: -0.03em; }
 .logo-row { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; align-content: start; }
-.logo-row span { padding: 0.8rem 1rem; border: 1px solid var(--light-line); border-radius: 999px; color: #3f3f3f; font-family: "Martian Mono", monospace; font-size: 0.55rem; text-transform: uppercase; }
+.logo-row span { padding: 0.8rem 1rem; border: 1px solid var(--light-line); border-radius: 999px; color: #3f3f3f; font-family: "Martian Mono Variable", monospace; font-size: 0.55rem; text-transform: uppercase; }
 .logo-row-dark span { border-color: #aaa; }
 .partners-row { margin-top: 2rem; }
 
@@ -165,7 +157,7 @@ section { scroll-margin-top: 6rem; }
 .project-card { min-width: 0; }
 .project-image-wrap { position: relative; aspect-ratio: 1.36; overflow: hidden; background: #ccc; }
 .project-image-wrap img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.82); }
-.project-number, .project-image-caption { position: absolute; top: 1rem; z-index: 1; font-family: "Martian Mono", monospace; font-size: 0.55rem; text-transform: uppercase; }
+.project-number, .project-image-caption { position: absolute; top: 1rem; z-index: 1; font-family: "Martian Mono Variable", monospace; font-size: 0.55rem; text-transform: uppercase; }
 .project-number { left: 1rem; }
 .project-image-caption { right: 1rem; }
 .project-card:nth-child(2) .project-image-wrap { background: #090909; }
@@ -177,7 +169,7 @@ section { scroll-margin-top: 6rem; }
 .project-card-title h3 { font-family: "Neue Haas", sans-serif; font-size: clamp(2rem, 3.6vw, 3.3rem); font-weight: 400; letter-spacing: -0.08em; line-height: 0.9; }
 .project-card-title svg { width: 1.15rem; height: 1.15rem; }
 .project-card > p { max-width: 20rem; margin-top: 0.9rem; color: #666; font-size: 0.93rem; line-height: 1.15; letter-spacing: -0.025em; }
-.project-link { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 1.2rem; border-bottom: 1px solid currentColor; padding-bottom: 0.35rem; font-family: "Martian Mono", monospace; font-size: 0.58rem; text-transform: uppercase; }
+.project-link { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 1.2rem; border-bottom: 1px solid currentColor; padding-bottom: 0.35rem; font-family: "Martian Mono Variable", monospace; font-size: 0.58rem; text-transform: uppercase; }
 .project-link svg { width: 0.75rem; height: 0.75rem; }
 .project-endcap { margin-top: 7rem; padding: 3.5rem 0 0; display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: start; border-top: 1px solid var(--light-line); }
 .project-endcap > span { font-size: 1.2rem; }
@@ -208,7 +200,7 @@ section { scroll-margin-top: 6rem; }
 .testimonial-card > p { max-width: 18rem; margin-top: 0.5rem; font-family: "Neue Haas", sans-serif; font-size: 1.55rem; letter-spacing: -0.06em; line-height: 0.95; }
 .testimonial-card footer { margin-top: auto; display: flex; flex-direction: column; gap: 0.3rem; padding-top: 2rem; font-size: 0.77rem; }
 .testimonial-card footer span { color: #777; }
-.listen-line { margin-top: 1.2rem; display: flex; align-items: center; gap: 0.45rem; color: #777; font-family: "Martian Mono", monospace; font-size: 0.58rem; text-transform: uppercase; }
+.listen-line { margin-top: 1.2rem; display: flex; align-items: center; gap: 0.45rem; color: #777; font-family: "Martian Mono Variable", monospace; font-size: 0.58rem; text-transform: uppercase; }
 .listen-line span { color: #ff571c; font-size: 0.8rem; }
 .listen-line svg { width: 0.8rem; height: 0.8rem; margin-left: auto; }
 
@@ -216,31 +208,31 @@ section { scroll-margin-top: 6rem; }
 .contact-heading { margin-top: 6rem; display: flex; align-items: end; justify-content: space-between; gap: 2rem; }
 .contact-heading h2 { max-width: 9ch; }
 .contact-heading em { color: #8c8c8c; }
-.contact-time { font-family: "Martian Mono", monospace; font-size: 0.58rem; color: #8c8c8c; text-transform: uppercase; }
+.contact-time { font-family: "Martian Mono Variable", monospace; font-size: 0.58rem; color: #8c8c8c; text-transform: uppercase; }
 .contact-grid { margin-top: 7rem; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 8rem; align-items: start; }
 .contact-copy { max-width: 20rem; display: grid; gap: 2rem; color: #999; font-size: 1.1rem; line-height: 1; letter-spacing: -0.04em; }
 .contact-form { max-width: 40rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem 1rem; }
-.contact-form label { margin-top: 0.8rem; color: #999; font-family: "Martian Mono", monospace; font-size: 0.56rem; text-transform: uppercase; }
+.contact-form label { margin-top: 0.8rem; color: #999; font-family: "Martian Mono Variable", monospace; font-size: 0.56rem; text-transform: uppercase; }
 .contact-form label:nth-of-type(3) { grid-column: 1 / -1; }
 .contact-form input, .contact-form textarea { width: 100%; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; outline: 0; padding: 0.6rem 0 0.9rem; background: transparent; color: var(--white); font-size: 1.25rem; letter-spacing: -0.04em; }
 .contact-form input:nth-of-type(2), .contact-form textarea { grid-column: 1 / -1; }
 .contact-form textarea { resize: vertical; }
 .contact-form input::placeholder, .contact-form textarea::placeholder { color: #5e5e5e; }
 .contact-form input:focus, .contact-form textarea:focus { border-color: #ff571c; }
-.contact-form button { grid-column: 1 / -1; width: max-content; margin-top: 1.6rem; display: inline-flex; align-items: center; gap: 0.7rem; border-bottom: 1px solid var(--white); padding: 0.65rem 0; background: transparent; color: var(--white); font-family: "Martian Mono", monospace; font-size: 0.62rem; text-transform: uppercase; }
+.contact-form button { grid-column: 1 / -1; width: max-content; margin-top: 1.6rem; display: inline-flex; align-items: center; gap: 0.7rem; border-bottom: 1px solid var(--white); padding: 0.65rem 0; background: transparent; color: var(--white); font-family: "Martian Mono Variable", monospace; font-size: 0.62rem; text-transform: uppercase; }
 .contact-form button svg { width: 0.9rem; height: 0.9rem; }
-.cookie-bar { position: fixed; left: 50%; bottom: 1.2rem; z-index: 40; width: min(23rem, calc(100% - 2rem)); padding: 0.9rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; transform: translateX(-50%); border: 1px solid rgba(255,255,255,0.22); background: rgba(12,12,12,0.9); color: #aaa; font-family: "Martian Mono", monospace; font-size: 0.48rem; line-height: 1.3; text-transform: uppercase; }
+.cookie-bar { position: fixed; left: 50%; bottom: 1.2rem; z-index: 40; width: min(23rem, calc(100% - 2rem)); padding: 0.9rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; transform: translateX(-50%); border: 1px solid rgba(255,255,255,0.22); background: rgba(12,12,12,0.9); color: #aaa; font-family: "Martian Mono Variable", monospace; font-size: 0.48rem; line-height: 1.3; text-transform: uppercase; }
 .cookie-bar div { display: flex; gap: 0.6rem; }
 .cookie-bar button { padding: 0; background: transparent; color: var(--white); font-family: inherit; font-size: inherit; font-weight: 600; text-transform: uppercase; }
 
 .site-footer { padding: 1rem 0 1.3rem; border-top: 1px solid var(--line); }
 .footer-grid { padding: 4rem 0 7rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
 .footer-logo img { width: 7.4rem; filter: brightness(0) invert(1); }
-.footer-grid p { margin-top: 4rem; color: #777; font-family: "Martian Mono", monospace; font-size: 0.55rem; text-transform: uppercase; }
+.footer-grid p { margin-top: 4rem; color: #777; font-family: "Martian Mono Variable", monospace; font-size: 0.55rem; text-transform: uppercase; }
 .footer-email, .footer-phone { display: block; width: max-content; max-width: 100%; margin-top: 1.2rem; font-family: "Neue Haas", sans-serif; font-size: 1.4rem; letter-spacing: -0.06em; overflow-wrap: anywhere; }
-.footer-phone { margin-top: 0.5rem; color: #777; font-family: "Martian Mono", monospace; font-size: 0.65rem; letter-spacing: 0; }
+.footer-phone { margin-top: 0.5rem; color: #777; font-family: "Martian Mono Variable", monospace; font-size: 0.65rem; letter-spacing: 0; }
 .footer-socials { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.2rem; }
-.footer-socials a { border: 1px solid var(--line); border-radius: 999px; padding: 0.6rem 0.8rem; font-family: "Martian Mono", monospace; font-size: 0.55rem; text-transform: uppercase; }
+.footer-socials a { border: 1px solid var(--line); border-radius: 999px; padding: 0.6rem 0.8rem; font-family: "Martian Mono Variable", monospace; font-size: 0.55rem; text-transform: uppercase; }
 .footer-bottom { padding-top: 1rem; display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--line); color: #777; }
 
 /* Compact contact close inspired by the supplied reference image. */
