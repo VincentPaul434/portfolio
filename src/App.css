@@ -124,9 +124,9 @@ section { scroll-margin-top: 6rem; }
 .vision-section { position: relative; min-height: 100svh; padding: 3rem 0 4rem; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
 .vision-rule { height: 1px; width: 100%; background: var(--line); }
 .vision-statement { display: flex; align-items: end; justify-content: space-between; gap: 2rem; }
-.vision-statement p { max-width: 12ch; font-family: "Neue Haas", sans-serif; font-size: clamp(3rem, 7vw, 7rem); letter-spacing: -0.1em; line-height: 0.8; }
+.vision-statement p { max-width: 12ch; font-family: "Familjen Grotesk", Arial, sans-serif; font-size: clamp(3rem, 7vw, 7rem); letter-spacing: -0.075em; line-height: 0.8; }
 .vision-statement span { align-self: center; font-family: "Martian Mono Variable", monospace; font-size: 0.62rem; text-transform: uppercase; }
-.vision-marquee { display: flex; flex-direction: column; gap: 0; width: max-content; color: var(--white); font-family: "Neue Haas", sans-serif; font-size: clamp(5rem, 15vw, 15rem); letter-spacing: -0.12em; line-height: 0.74; white-space: nowrap; transform: translateX(-4%); }
+.vision-marquee { display: flex; flex-direction: column; gap: 0; width: max-content; color: var(--white); font-family: "Familjen Grotesk", Arial, sans-serif; font-size: clamp(5rem, 15vw, 15rem); letter-spacing: -0.09em; line-height: 0.74; white-space: nowrap; transform: translateX(-4%); }
 .vision-marquee span:nth-child(2) { color: rgba(255,255,255,0.25); transform: translateX(19%); }
 .vision-marquee i { color: #ff571c; font-size: 0.5em; font-style: normal; letter-spacing: 0; }
 
