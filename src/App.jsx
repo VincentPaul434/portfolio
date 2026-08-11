@@ -106,7 +106,7 @@ function SiteHeader({ menuOpen, setMenuOpen, soundOn, setSoundOn }) {
     <>
       <header className="site-header">
         <a className="site-logo" href="#top" aria-label="Vincent Paul home">
-          <img src="/trionn/logo.svg" alt="Vincent Paul" />
+          <img src="/vpd/logo.svg" alt="VPD" />
         </a>
         <div className="header-actions">
           <button className="sound-button" type="button" onClick={() => setSoundOn((value) => !value)} aria-label={soundOn ? "Mute sound" : "Enable sound"}>
@@ -364,7 +364,7 @@ function Contact({ cookieVisible, setCookieVisible }) {
       </section>
       <footer className="site-footer dark-section">
         <div className="shell footer-grid">
-          <div><a className="footer-logo" href="#top"><img src="/trionn/logo.svg" alt="Vincent Paul" /></a><p>©2026 Vincent Paul Dumangcas</p></div>
+          <div><a className="footer-logo" href="#top"><img src="/vpd/logo.svg" alt="VPD" /></a><p>©2026 Vincent Paul Dumangcas</p></div>
           <div><span className="mini-label">Business enquiry</span><a className="footer-email" href="mailto:dumangcasvincentpaul@gmail.com">dumangcasvincentpaul@gmail.com</a><a className="footer-phone" href="tel:+639824182099">+63 982 418 2099</a></div>
           <div><span className="mini-label">Social</span><div className="footer-socials"><a href="https://github.com/VincentPaul434" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/vincent-paul-dumangcas-74063a365/" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:dumangcasvincentpaul@gmail.com">Email</a></div></div>
         </div>
