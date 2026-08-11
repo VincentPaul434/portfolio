@@ -200,8 +200,18 @@ function Vision() {
         <span>✦ From idea to outcome.</span>
       </div>
       <div className="vision-marquee" aria-label="Inspire innovate impact">
-        <span>Inspire <i>·</i> Innovate <i>·</i> Impact</span>
-        <span>Inspire <i>·</i> Innovate <i>·</i> Impact</span>
+        <div className="vision-marquee-line">
+          <div className="vision-marquee-track">
+            <span>Inspire <i>·</i> Innovate <i>·</i> Impact</span>
+            <span aria-hidden="true">Inspire <i>·</i> Innovate <i>·</i> Impact</span>
+          </div>
+        </div>
+        <div className="vision-marquee-line vision-marquee-line-dim">
+          <div className="vision-marquee-track">
+            <span>Inspire <i>·</i> Innovate <i>·</i> Impact</span>
+            <span aria-hidden="true">Inspire <i>·</i> Innovate <i>·</i> Impact</span>
+          </div>
+        </div>
       </div>
     </section>
   )
