@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight, Menu, Plus, Volume2, VolumeX, X } from "lucid
 
 const navItems = [
   { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
+  { label: "Skills", href: "#skills" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ]
@@ -12,55 +12,105 @@ const projects = [
   {
     title: "ETC Cars",
     category: "Dealership platform",
+    role: "Featured build",
+    year: "Current",
     description: "A calm operating system for vehicles, leads, sales, expenses, and follow-ups.",
+    technologies: ["Vehicles", "Leads", "Sales", "Expenses"],
     image: "/projects/etc-cars.png",
+    visual: "etc-cars",
+    link: "#contact",
+    linkLabel: "Get details",
     number: "01",
   },
   {
-    title: "Pulse Studio",
-    category: "Creative direction",
-    description: "A bold digital stage for artists, projects, and culture built around sound.",
-    image: "/projects/trionn/pulse-studio.jpg",
+    title: "CIT NurseTracer",
+    category: "Healthcare · Operations · Dashboard",
+    role: "Full-stack developer",
+    year: "2025",
+    description: "A ward-assignment app that makes nursing handoffs easier to follow than scattered chat updates.",
+    technologies: ["React", "Tailwind", "Vercel"],
+    link: "https://citnursetracer.vercel.app/",
+    visual: "nurse-tracer",
     number: "02",
   },
   {
-    title: "MyWorker AI",
-    category: "AI workforce platform",
-    description: "An interface for hiring, managing, and scaling digital workers with clarity.",
-    image: "/projects/trionn/myworker.jpg",
+    title: "Synapse UI",
+    category: "UI kit · Frontend · Design system",
+    role: "Component system",
+    year: "2025",
+    description: "A reusable component kit for React projects so basic interface patterns do not need to be redesigned from scratch every time.",
+    technologies: ["React", "Tailwind", "Components"],
+    link: "https://github.com/princeprog/synapse-ui",
+    source: "https://github.com/princeprog/synapse-ui",
+    visual: "synapse-ui",
     number: "03",
   },
   {
-    title: "Loftloom",
-    category: "Real estate platform",
-    description: "A seamless property discovery experience for the next place to call home.",
-    image: "/projects/trionn/loftloom.jpg",
+    title: "Poultry Prophet",
+    category: "Analytics · Scoring · Platform",
+    role: "Full-stack developer",
+    year: "2025",
+    description: "A breeding-management platform for game fowl operations that tracks bird development and computes readiness scores.",
+    technologies: ["Next.js", "React", "Spring Boot", "Postgres"],
+    link: "https://github.com/VincentPaul434/poultry-prophet-frontend",
+    source: "https://github.com/VincentPaul434/poultry-prophet-backend",
+    visual: "poultry-prophet",
     number: "04",
   },
 ]
 
-const services = [
+const skillGroups = [
   {
-    title: "Product design",
-    description: "Thoughtful product design that captures attention, deepens engagement, and builds lasting loyalty.",
+    title: "Frontend",
+    description: "Interfaces I use to make products feel clear, fast, and steady under real use.",
+    skills: ["React", "Next.js", "TypeScript", "Tailwind"],
     label: "01",
   },
   {
-    title: "Website & mobile design",
-    description: "High-quality website and app experiences designed to attract users and keep them coming back.",
+    title: "Backend",
+    description: "Server-side work focused on practical logic, readable APIs, and maintainable structure.",
+    skills: ["Node.js", "Spring Boot", "Java", "Python"],
     label: "02",
   },
   {
-    title: "Full-stack development",
-    description: "Interfaces, backend systems, and data flows designed to stay clear and dependable under real use.",
+    title: "Data",
+    description: "Storage and service layers I reach for when the app needs solid persistence and sync.",
+    skills: ["PostgreSQL", "MongoDB", "Firebase", "Docker"],
     label: "03",
   },
   {
-    title: "Branding",
-    description: "Impactful visual systems that give products credibility, clarity, and a memorable point of view.",
+    title: "Workflow",
+    description: "Tools that help me design, iterate, and ship with less friction from idea to release.",
+    skills: ["Git", "Vite", "Figma", "JavaScript"],
     label: "04",
   },
 ]
+
+const capabilities = [
+  {
+    title: "Frontend implementation",
+    description: "Responsive React interfaces that feel clear, structured, and usable on real screens.",
+    label: "01",
+  },
+  {
+    title: "Backend integration",
+    description: "Spring Boot or Node-backed flows with auth, forms, tables, and database-connected features.",
+    label: "02",
+  },
+  {
+    title: "Finishing incomplete builds",
+    description: "Cleaning up rough UI, fixing bugs, and getting half-done projects closer to shippable.",
+    label: "03",
+  },
+  {
+    title: "Calm problem solving",
+    description: "Reading docs, tracing behavior, and working through unknowns with patience and accuracy.",
+    label: "04",
+  },
+]
+
+// Kept as a compatibility alias for the legacy section component below.
+const services = capabilities
 
 const testimonials = [
   {
@@ -227,6 +277,44 @@ function FactCard({ value, label, children }) {
   )
 }
 
+function Skills() {
+  return (
+    <section id="skills" className="skills-section light-section">
+      <div className="shell">
+        <div className="section-heading-row">
+          <div>
+            <span className="section-kicker">What I work with</span>
+            <h2>My <em>skills.</em></h2>
+            <p className="skills-intro">The stack I reach for most often when building full-stack products and practical frontend systems.</p>
+          </div>
+          <span className="section-index">02 / 06</span>
+        </div>
+        <div className="skill-group-grid">
+          {skillGroups.map((group) => (
+            <article className="skill-group" key={group.title}>
+              <div className="skill-group-topline"><span>{group.title}</span><span>{group.label}</span></div>
+              <p>{group.description}</p>
+              <div className="skill-pill-list">{group.skills.map((skill) => <span key={skill}>{skill}</span>)}</div>
+            </article>
+          ))}
+        </div>
+        <div className="capability-block">
+          <div className="capability-heading"><span className="section-kicker">How I contribute</span><p>Useful systems, readable interfaces, and the finishing work that makes software feel calm under actual use.</p></div>
+          <div className="capability-list">
+            {capabilities.map((capability) => (
+              <article className="capability-row" key={capability.title}>
+                <span>{capability.label}</span>
+                <h3>{capability.title}</h3>
+                <p>{capability.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Facts() {
   const awardNames = ["Awwwards", "CSS Design Awards", "The FWA", "CSS Winner", "A' Design Award", "GSAP"]
   const partnerNames = ["CIT-U", "Vercel", "GitHub", "Spring", "OpenAI"]
@@ -260,6 +348,34 @@ function Facts() {
   )
 }
 
+function ProjectCardContent({ project }) {
+  return (
+    <article className="project-card">
+      <div className={`project-image-wrap project-visual project-visual-${project.visual}`} role="img" aria-label={`${project.title} project preview`}>
+        {project.image ? <img src={project.image} alt="" loading="lazy" /> : (
+          <div className="project-visual-art" aria-hidden="true">
+            <span className="visual-window visual-window-one" />
+            <span className="visual-window visual-window-two" />
+            <span className="visual-window visual-window-three" />
+            <span className="visual-accent" />
+          </div>
+        )}
+        <span className="project-number">{project.number}</span>
+        <span className="project-image-caption">✦ Designed with intent</span>
+      </div>
+      <div className="project-card-meta"><span>{project.category}</span><span>{project.year}</span></div>
+      <div className="project-card-title"><h3>{project.title}</h3><ArrowUpRight aria-hidden="true" /></div>
+      <p className="project-card-role">{project.role}</p>
+      <p>{project.description}</p>
+      <div className="project-tech-list">{project.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div>
+      <div className="project-links">
+        <a className="project-link" href={project.link} target={project.link.startsWith("http") ? "_blank" : undefined} rel={project.link.startsWith("http") ? "noreferrer" : undefined}><HoverLabel>{project.linkLabel || "Visit project"}</HoverLabel><ArrowRight aria-hidden="true" /></a>
+        {project.source ? <a className="project-link project-link-muted" href={project.source} target="_blank" rel="noreferrer"><HoverLabel>Source</HoverLabel><ArrowUpRight aria-hidden="true" /></a> : null}
+      </div>
+    </article>
+  )
+}
+
 function ProjectCard({ project }) {
   return (
     <article className="project-card">
@@ -287,7 +403,7 @@ function Work() {
           </div>
           <ArrowLink href="#contact">View all projects</ArrowLink>
         </div>
-        <div className="project-grid">{projects.map((project) => <ProjectCard key={project.title} project={project} />)}</div>
+        <div className="project-grid">{projects.map((project) => <ProjectCardContent key={project.title} project={project} />)}</div>
         <div className="project-endcap"><span>✦</span><p>Discover the complete collection of digital experiences, brands, and platforms.</p><ArrowLink href="#contact">Explore project</ArrowLink></div>
       </div>
     </section>
@@ -313,6 +429,41 @@ function Services() {
           ))}
         </div>
         <div className="services-endnote"><span>✦</span><p>Design with intent. Built to work.</p><ArrowLink href="#contact" light>View services</ArrowLink></div>
+      </div>
+    </section>
+  )
+}
+
+function Experience() {
+  return (
+    <section className="experience-section light-section">
+      <div className="shell">
+        <div className="section-heading-row">
+          <div><span className="section-kicker">Background</span><h2>Build real things.<br /><em>Improve quickly.</em></h2><p className="experience-intro">The short version of my path so far: build real things, improve quickly, and stay honest about what I am still learning.</p></div>
+          <span className="section-index">05 / 06</span>
+        </div>
+        <div className="experience-list">
+          <article className="experience-row">
+            <span className="experience-period">2021 to present</span>
+            <h3>BS Information Technology at CIT-U</h3>
+            <p>Built my foundation through classwork, self-study, and experiments that slowly turned into real project work.</p>
+          </article>
+          <article className="experience-row">
+            <span className="experience-period">2025</span>
+            <h3>Started shipping full-stack student projects</h3>
+            <p>Handled data models, authentication, UI states, and deployment instead of stopping at mockups or isolated screens.</p>
+          </article>
+          <article className="experience-row">
+            <span className="experience-period">Internship</span>
+            <h3>Software Engineer at AlphaExplora</h3>
+            <p>Information Technology Services internship experience.</p>
+          </article>
+          <article className="experience-row">
+            <span className="experience-period">Now</span>
+            <h3>Looking for real product work</h3>
+            <p>Aiming for an internship, junior role, or contract work where I can contribute and learn from stronger engineers.</p>
+          </article>
+        </div>
       </div>
     </section>
   )
@@ -396,10 +547,9 @@ function App() {
         <Hero />
         <About />
         <Vision />
-        <Facts />
+        <Skills />
         <Work />
-        <Services />
-        <Testimonials />
+        <Experience />
         <Contact cookieVisible={cookieVisible} setCookieVisible={setCookieVisible} />
       </main>
     </div>
